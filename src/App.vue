@@ -1,17 +1,17 @@
 
 <template>
   <main>
-    <Sidebar/>
+    <Sidebar />
   </main>
 </template>
 
 <script>
 import Sidebar from './components/Sidebar/Sidebar.vue';
 export default {
-  name:' App',
+  name: ' App',
   components: {
     Sidebar
-}
+  }
 }
 </script>
 
