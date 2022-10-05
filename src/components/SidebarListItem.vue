@@ -12,14 +12,15 @@
 
 <script>
 export default {
-    props: [
-        'listImage',
-        'linkHref',
-        'listName'
-    ],
+    props: {
+
+        'listImage': String,
+        'linkHref': String,
+        'listName': String
+    },
     setup() {
         const getImageUrl = (name) => {
-            return new URL(`../../assets/${name}`, import.meta.url).href
+            return new URL(`../assets/${name}`, import.meta.url).href
         }
         return {
             getImageUrl

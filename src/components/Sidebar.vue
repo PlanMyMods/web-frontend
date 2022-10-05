@@ -11,7 +11,7 @@
         <Button @click="showSideBar = !showSideBar">
           <img
             class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white "
-            src="../../assets/arrowLeft.svg" alt="">
+            src="../assets/arrowLeft.svg" alt="">
         </Button>
       </div>
       <ul class="space-y-2 p-[10px] mt-[15px]">
@@ -31,7 +31,7 @@
       <Button @click="showSideBar = !showSideBar">
         <img
           class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white "
-          src="../../assets/arrowRight.svg" alt="">
+          src="../assets/arrowRight.svg" alt="">
       </Button>
     </div>
   </div>
@@ -39,8 +39,8 @@
 
 <script>
 import { ref } from 'vue'
-import Button from '../Button/Button.vue'
-import ListItem from '../ListItem/ListItem.vue'
+import Button from './Button.vue'
+import ListItem from './SidebarListItem.vue'
 
 export default {
   setup() {
