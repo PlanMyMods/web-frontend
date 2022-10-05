@@ -1,18 +1,19 @@
-<script>
-import Navbar from './components/Navbar.vue';
-export default {
-  name:' App',
-  components: {
-    Navbar
-  }
-}
-</script>
 
 <template>
   <main>
-    <Navbar/>
+    <Sidebar />
   </main>
 </template>
+
+<script>
+import Sidebar from './components/Sidebar.vue';
+export default {
+  name: ' App',
+  components: {
+    Sidebar
+  }
+}
+</script>
 
 <style scoped>
 
