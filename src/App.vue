@@ -4,6 +4,9 @@
     <Sidebar />
     <PageContentPlaceholder>
       <component :is="childComponent"></component>
+      <component :is="childComponent"></component>
+      <component :is="childComponent"></component>
+      <component :is="childComponent"></component>
     </PageContentPlaceholder>
   </main>
 </template>

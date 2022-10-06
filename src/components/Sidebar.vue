@@ -25,8 +25,8 @@
     </div>
   </aside>
   <!-- Sidebar Toggle -->
-  <div class="flex flex-col sticky" :class="{'hidden':showSideBar}">
-    <div class="px-2 py-[26px] absolute h-screen z-10 bg-gray-50 dark:bg-gray-800 overflow-y-auto ">
+  <div class="flex flex-col " :class="{'hidden':showSideBar}">
+    <div class="px-2 py-[26px] fixed h-screen z-10 bg-gray-50 dark:bg-gray-800 overflow-y-auto ">
       <Button @click="showSideBar = !showSideBar">
         <img
           class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white "
