@@ -1,16 +1,18 @@
 
 <template>
   <main>
-    <Sidebar />
+    <!-- navbar goes here -->
+    <Sidebar2 />
   </main>
 </template>
 
 <script>
-import Sidebar from './components/Sidebar.vue';
+import Sidebar2 from './components/Sidebar2.vue';
 export default {
   name: ' App',
   components: {
-    Sidebar
+    Sidebar2,
+
   }
 }
 </script>
