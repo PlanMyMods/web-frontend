@@ -2,6 +2,7 @@
 <template>
   <main>
     <Sidebar />
+    <!-- Navbar component goes here -->
     <PageContentPlaceholder>
       <component :is="childComponent"></component>
       <component :is="childComponent"></component>
