@@ -58,6 +58,8 @@
 <script>
 import { ref } from 'vue'
 import Button from './Button.vue'
+import ListItem from './SidebarListItem.vue'
+import PageContentPlaceholder from './PageContentPlaceholder.vue'
 export default {
     setup() {
         const showSideBar = ref(true)
@@ -65,7 +67,10 @@ export default {
     },
     components: {
         "Button": Button,
+        "ListItem": ListItem,
+        "PageContentPlaceholder": PageContentPlaceholder
     }
+
 }
 
 </script>
