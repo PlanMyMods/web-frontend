@@ -17,8 +17,8 @@ export default {
         'badgeName': String
     },
     setup() {
-        const getImageUrl = (name) => {
-            return new URL(`../assets/${name}`, import.meta.url).href
+        const getImageUrl = (path) => {
+            return new URL(`${path}`, import.meta.url).href
         }
         return {
             getImageUrl
