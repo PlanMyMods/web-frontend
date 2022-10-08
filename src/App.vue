@@ -2,13 +2,17 @@
 <template>
   <main>
     <!-- navbar goes here -->
-    <Sidebar />
-    <PageContentPlaceholder>
-      <component :is="childComponent"></component>
-      <component :is="childComponent"></component>
-      <component :is="childComponent"></component>
-      <component :is="childComponent"></component>
-    </PageContentPlaceholder>
+
+    <div class="flex overscroll-contain">
+      <Sidebar />
+      <PageContentPlaceholder>
+        <component :is="childComponent"></component>
+        <component :is="childComponent"></component>
+        <component :is="childComponent"></component>
+        <component :is="childComponent"></component>
+      </PageContentPlaceholder>
+    </div>
+
   </main>
 </template>
 
