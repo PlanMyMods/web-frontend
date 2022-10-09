@@ -3,8 +3,8 @@
   <main>
     <!-- navbar goes here -->
 
+    <Navbar />
     <div class="flex overscroll-contain">
-      <Navbar />
       <Sidebar />
       <PageContentPlaceholder>
         <component :is="childComponent"></component>
