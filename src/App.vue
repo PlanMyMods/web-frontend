@@ -1,14 +1,18 @@
 
 <template>
   <main>
-    <Sidebar />
-    <!-- Navbar component goes here -->
-    <PageContentPlaceholder>
-      <component :is="childComponent"></component>
-      <component :is="childComponent"></component>
-      <component :is="childComponent"></component>
-      <component :is="childComponent"></component>
-    </PageContentPlaceholder>
+    <!-- navbar goes here -->
+
+    <div class="flex overscroll-contain">
+      <Sidebar />
+      <PageContentPlaceholder>
+        <component :is="childComponent"></component>
+        <component :is="childComponent"></component>
+        <component :is="childComponent"></component>
+        <component :is="childComponent"></component>
+      </PageContentPlaceholder>
+    </div>
+
   </main>
 </template>
 
