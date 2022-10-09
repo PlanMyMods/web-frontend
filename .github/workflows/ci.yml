@@ -1,0 +1,133 @@
+name: ci
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set node version to 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "npm"
+          cache-dependency-path: "**/package-lock.json"
+
+      - name: Install Dependencies
+        run: npm ci
+
+  build:
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set node version to 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "npm"
+          cache-dependency-path: "**/package-lock.json"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Test Build
+        run: npm run build
+
+  # frontend_test:
+  #   needs: [changes, install]
+  #   if: ${{ needs.changes.outputs.frontend == 'true' }}
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Use Node.js
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 14
+  #         cache: "npm"
+  #         cache-dependency-path: "**/package-lock.json"
+  #     - run: npm ci
+  #     - run: npm run test:frontend
+
+  # frontend_lint:
+  #   needs: [changes, install]
+  #   if: ${{ needs.changes.outputs.frontend == 'true' }}
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Use Node.js
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 14
+  #         cache: "npm"
+  #         cache-dependency-path: "**/package-lock.json"
+  #     - run: npm ci
+  #     - run: npm run lint:frontend
+
+  # backend_test:
+  #   needs: [changes, install]
+  #   if: ${{ needs.changes.outputs.backend == 'true' }}
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Use Node.js
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 14
+  #         cache: "npm"
+  #         cache-dependency-path: "**/package-lock.json"
+  #     - run: npm ci
+  #     - run: npm run test:backend
+  #     - name: Coveralls
+  #       uses: coverallsapp/github-action@master
+  #       with:
+  #         github-token: ${{ secrets.GITHUB_TOKEN }}
+
+  # angularjs_test:
+  #   needs: [changes, install]
+  #   if: ${{ needs.changes.outputs.angularjs == 'true' }}
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Use Node.js
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 14
+  #         cache: "npm"
+  #         cache-dependency-path: "**/package-lock.json"
+  #     - run: npm ci
+  #     - run: npm run test:angularjs
+
+  # src_lint:
+  #   needs: [changes, install]
+  #   if: ${{ needs.changes.outputs.backend == 'true' || needs.changes.outputs.angularjs == 'true' }}
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Use Node.js
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 14
+  #         cache: "npm"
+  #         cache-dependency-path: "**/package-lock.json"
+  #     - run: npm ci
+  #     - run: npm run lint-ci
+
+  # src_e2e:
+  #   needs: [changes, build]
+  #   if: ${{ needs.changes.outputs.backend == 'true' || needs.changes.outputs.angularjs == 'true' }}
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Use Node.js
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 14
+  #         cache: "npm"
+  #         cache-dependency-path: "**/package-lock.json"
+  #     - run: npm ci
+  #     - run: npm run test-e2e
