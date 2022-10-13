@@ -8,7 +8,7 @@
         <div class="inline-flex">
             <h1 class="block float-left font-bold tracking-widest p-[10px] dark:text-white"
                 :class="{'scale-0':showSideBar}">
-                BeforeClass
+                <!-- BeforeClass -->
             </h1>
         </div>
         <ul class="space-y-2 p-[10px]  mt-[15px]" :class="{'px-0':showSideBar}">
