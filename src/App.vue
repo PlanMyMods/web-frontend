@@ -6,10 +6,11 @@
     <div class="flex overscroll-contain">
       <Sidebar />
       <PageContentPlaceholder>
+        <!-- <component :is="childComponent"></component>
         <component :is="childComponent"></component>
         <component :is="childComponent"></component>
-        <component :is="childComponent"></component>
-        <component :is="childComponent"></component>
+        <component :is="childComponent"></component> -->
+        <Placeholder />
       </PageContentPlaceholder>
     </div>
 
@@ -21,13 +22,15 @@ import Sidebar from './components/Sidebar.vue';
 import Button from './components/Button.vue';
 import PageContentPlaceholder from './components/PageContentPlaceholder.vue'
 import SampleContent from './components/SampleContent.vue';
+import Placeholder from './components/Placeholder.vue';
 export default {
   name: ' App',
   components: {
     Button,
     Sidebar,
     PageContentPlaceholder,
-    SampleContent
+    SampleContent,
+    Placeholder
   },
   data() {
     return {
