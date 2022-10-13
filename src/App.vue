@@ -3,6 +3,7 @@
   <main>
     <!-- navbar goes here -->
 
+    <Navbar />
     <div class="flex overscroll-contain">
       <Sidebar />
       <PageContentPlaceholder>
@@ -15,7 +16,8 @@
 </template>
 
 <script>
-import Sidebar from './components/Sidebar.vue';
+import Sidebar from './components/Sidebar.vue'
+import Navbar from './components/Navbar.vue';
 import Button from './components/Button.vue';
 import PageContentPlaceholder from './components/PageContentPlaceholder.vue'
 import SampleContent from './components/SampleContent.vue';
@@ -27,7 +29,8 @@ export default {
     Sidebar,
     PageContentPlaceholder,
     SampleContent,
-    Placeholder
+    Placeholder,
+    Navbar,
   },
   data() {
     return {
