@@ -19,7 +19,7 @@
                     unstructured data (i.e., text) in current business information systems.
                 </div>
                 <!--Preclusions, Prerequisite and Co-requisite-->
-                <div class="text-white">
+                <div class="text-black dark:text-white">
                     <div id="preclusion">
                         <p class="font-medium">Preclusions:</p>
                         <p class="text-blue-600">CS203</p>

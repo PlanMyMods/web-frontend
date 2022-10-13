@@ -1,6 +1,6 @@
 <template>
     <div class="bg-gray-100 dark:bg-gray-800 p-5 pt-8 relative h-screen min-w-[14rem] duration-300 w-56"
-        :class="{'w-20 min-w-[5rem]':showSideBar}">
+        :class="{'w-5 min-w-[5rem]':showSideBar}">
         <Button @click="showSideBar = !showSideBar" class=" text-gray-500  absolute right-5 top-9 dark:text-gray-400"
             :class="{'rotate-180':showSideBar}">
             <img class="w-6 h-6" src="../assets/arrowLeft.svg" alt="">

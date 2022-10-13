@@ -6,10 +6,7 @@
     <div class="flex overscroll-contain">
       <Sidebar />
       <PageContentPlaceholder>
-        <!-- <component :is="childComponent"></component>
-        <component :is="childComponent"></component>
-        <component :is="childComponent"></component>
-        <component :is="childComponent"></component> -->
+
         <Placeholder />
       </PageContentPlaceholder>
     </div>
