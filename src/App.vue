@@ -1,44 +1,192 @@
-
 <template>
-  <main>
+  <main class="w-screen flex flex-col fixed">
     <!-- navbar goes here -->
 
-    <Navbar />
-    <div class="flex overscroll-contain">
+    <Navbar class="" />
+    <div class="flex h-[calc(100vh-4rem)]">
       <Sidebar />
-      <PageContentPlaceholder>
-        <component :is="childComponent"></component>
-        <component :is="childComponent"></component>
-        <component :is="childComponent"></component>
-        <component :is="childComponent"></component>
-      </PageContentPlaceholder>
+      <div class="flex-auto dark:bg-gray-900 bg-grey-2 overflow-y-scroll">
+        <div class="items-center mx-auto max-w-screen-2xl p-10 space-y-5">
+          <ModuleCard
+            title="IS112 Data Management"
+            short-description="some short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short text"
+            preclusion="CS101"
+            prerequisite="CS101"
+            corequisite="CS101"
+            exam-date-time="22 Sep 2022 8.30am"
+            exam-hours="2"
+            :course-assessments="[
+              {
+                name: 'Class Participation',
+                weightage: 0.1,
+              },
+              {
+                name: 'Lab Test 1',
+                weightage: 0.1,
+              },
+              {
+                name: 'Lab Test 2',
+                weightage: 0.25,
+              },
+              {
+                name: 'Group Project',
+                weightage: 0.25,
+              },
+              {
+                name: 'Final Exam',
+                weightage: 0.3,
+              },
+            ]"
+            course-link="https://smu.sg/cdd-112"
+            recommended-weekly-hours="2"
+            :badges="[
+              { imagePath: '../assets/projects.svg', name: 'Year 1' },
+              { imagePath: '../assets/projects.svg', name: 'Projects' },
+            ]"
+            :terms="['1', '2', '3A', '3B']"
+          />
+          <ModuleCard
+            title="IS216 Web Application Development"
+            short-description="some short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short text"
+            preclusion="CS101"
+            prerequisite="CS101"
+            corequisite="CS101"
+            exam-date-time="22 Sep 2022 8.30am"
+            exam-hours="2"
+            :course-assessments="[
+              {
+                name: 'Class Participation',
+                weightage: 0.1,
+              },
+              {
+                name: 'Lab Test 1',
+                weightage: 0.1,
+              },
+              {
+                name: 'Lab Test 2',
+                weightage: 0.25,
+              },
+              {
+                name: 'Group Project',
+                weightage: 0.25,
+              },
+              {
+                name: 'Final Exam',
+                weightage: 0.3,
+              },
+            ]"
+            course-link="https://smu.sg/cdd-112"
+            recommended-weekly-hours="2"
+            :badges="[
+              { imagePath: '../assets/projects.svg', name: 'Year 1' },
+              { imagePath: '../assets/projects.svg', name: 'Projects' },
+            ]"
+            :terms="['1', '2', '3A', '3B']"
+          />
+          <ModuleCard
+            title="IS210 Business Process Analysis & Solutioning"
+            short-description="ssome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short text"
+            preclusion="CS101"
+            prerequisite="CS101"
+            corequisite="CS101"
+            exam-date-time="22 Sep 2022 8.30am"
+            exam-hours="2"
+            :course-assessments="[
+              {
+                name: 'Class Participation',
+                weightage: 0.1,
+              },
+              {
+                name: 'Lab Test 1',
+                weightage: 0.1,
+              },
+              {
+                name: 'Lab Test 2',
+                weightage: 0.25,
+              },
+              {
+                name: 'Group Project',
+                weightage: 0.25,
+              },
+              {
+                name: 'Final Exam',
+                weightage: 0.3,
+              },
+            ]"
+            course-link="https://smu.sg/cdd-112"
+            recommended-weekly-hours="2"
+            :badges="[
+              { imagePath: '../assets/projects.svg', name: 'Year 1' },
+              { imagePath: '../assets/projects.svg', name: 'Projects' },
+            ]"
+            :terms="['1', '2', '3A', '3B']"
+          />
+          <ModuleCard
+            title="test"
+            short-description="some short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short text"
+            preclusion="CS101"
+            prerequisite="CS101"
+            corequisite="CS101"
+            exam-date-time="22 Sep 2022 8.30am"
+            exam-hours="2"
+            :course-assessments="[
+              {
+                name: 'Class Participation',
+                weightage: 0.1,
+              },
+              {
+                name: 'Lab Test 1',
+                weightage: 0.1,
+              },
+              {
+                name: 'Lab Test 2',
+                weightage: 0.25,
+              },
+              {
+                name: 'Group Project',
+                weightage: 0.25,
+              },
+              {
+                name: 'Final Exam',
+                weightage: 0.3,
+              },
+            ]"
+            course-link="https://smu.sg/cdd-112"
+            recommended-weekly-hours="2"
+            :badges="[
+              { imagePath: '../assets/projects.svg', name: 'Year 1' },
+              { imagePath: '../assets/projects.svg', name: 'Projects' },
+            ]"
+            :terms="['1', '2', '3A', '3B']"
+          />
+        </div>
+      </div>
     </div>
-
   </main>
 </template>
 
 <script>
-import Sidebar from './components/Sidebar.vue'
-import Navbar from './components/Navbar.vue';
-import Button from './components/Button.vue';
-import PageContentPlaceholder from './components/PageContentPlaceholder.vue'
-import SampleContent from './components/SampleContent.vue';
+import Sidebar from "./components/Sidebar.vue";
+import Navbar from "./components/Navbar.vue";
+import Button from "./components/Button.vue";
+import PageContentPlaceholder from "./components/PageContentPlaceholder.vue";
+import SampleContent from "./components/SampleContent.vue";
+import ModuleCard from "./components/ModuleCard.vue";
 export default {
-  name: ' App',
+  name: " App",
   components: {
     Button,
     Sidebar,
     PageContentPlaceholder,
     SampleContent,
-    Navbar
+    Navbar,
+    ModuleCard,
   },
   data() {
     return {
-      childComponent: 'SampleContent',
-    }
-  }
-}
+      childComponent: "SampleContent",
+    };
+  },
+};
 </script>
-<style scoped>
-
-</style>
+<style scoped></style>
