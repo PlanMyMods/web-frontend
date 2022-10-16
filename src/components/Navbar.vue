@@ -15,7 +15,7 @@
                         class="hidden flex-shrink-0 z-10 md:inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200   dark:bg-gray-700 dark:hover:bg-gray-600  dark:text-white dark:border-gray-600"
                         type="button">
                         All categories
-                        <img class="ml-1 w-4 h-4 " src='../assets/arrowDown.svg' alt="">
+                        <img class="ml-1 w-4 h-4 " src='/assets/arrowDown.svg' alt="">
                     </button>
 
                     <div id="dropdown"
@@ -63,7 +63,7 @@
                             placeholder="Search" required>
                         <button type="submit"
                             class=" p-2.5 text-sm font-medium text-white bg-blue-700 rounded-lg md:rounded-r-lg md:rounded-l-none border border-blue-700 hover:bg-blue-800  dark:bg-blue-600 dark:hover:bg-blue-700 ">
-                            <img class="w-5 h-5" src="../assets/search.svg" alt="">
+                            <img class="w-5 h-5" src="/assets/search.svg" alt="">
                             <span class="sr-only">Search</span>
                         </button>
                     </div>
