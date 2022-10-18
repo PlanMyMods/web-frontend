@@ -8,153 +8,164 @@
       <div class="flex-auto dark:bg-gray-900 bg-grey-2 overflow-y-scroll">
         <div class="items-center mx-auto max-w-screen-2xl p-10 space-y-5">
           <ModuleCard
-            title="IS112 Data Management"
+            title="IS446 Managing Customer Relations with Analytics: Asian Insights"
             short-description="some short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short text"
             preclusion="CS101"
             prerequisite="CS101"
             corequisite="CS101"
-            exam-date-time="22 Sep 2022 8.30am"
-            exam-hours="2"
-            :course-assessments="[
+            :valid_terms="['1', '2', '3A', '3B']"
+            :terms="[
               {
-                name: 'Class Participation',
-                weightage: 0.1,
-              },
-              {
-                name: 'Lab Test 1',
-                weightage: 0.1,
-              },
-              {
-                name: 'Lab Test 2',
-                weightage: 0.25,
-              },
-              {
-                name: 'Group Project',
-                weightage: 0.25,
-              },
-              {
-                name: 'Final Exam',
-                weightage: 0.3,
+                term: 'AY2223/2',
+                assessment: [
+                  {
+                    name: 'Class Participation',
+                    weightage: 0.1,
+                  },
+                  {
+                    name: 'Lab Test 1',
+                    weightage: 0.1,
+                  },
+                  {
+                    name: 'Lab Test 2',
+                    weightage: 0.25,
+                  },
+                  {
+                    name: 'Group Project',
+                    weightage: 0.25,
+                  },
+                  {
+                    name: 'Final Exam',
+                    weightage: 0.3,
+                  },
+                ],
+                exam: {
+                  start: 1669813200,
+                  end: 1669820400,
+                  day: 3,
+                },
+                recommended: {
+                  hours: {
+                    homework: 0.3,
+                    lesson: 0.3,
+                    project: 0.4,
+                    total_weekly: 8,
+                  },
+                  year: 1,
+                },
               },
             ]"
             course-link="https://smu.sg/cdd-is112"
-            recommended-weekly-hours="2"
             :badges="[
               { imagePath: '/assets/projects.svg', name: 'Year 1' },
               { imagePath: '/assets/projects.svg', name: 'Projects' },
             ]"
-            :terms="['1', '2', '3A', '3B']"
           /><ModuleCard
             title="IS446 Managing Customer Relations with Analytics: Asian Insights"
             short-description="some short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short text"
             preclusion="CS101"
             prerequisite="CS101"
             corequisite="CS101"
-            exam-date-time="22 Sep 2022 8.30am"
-            exam-hours="2"
-            :course-assessments="[
+            :valid_terms="['1', '2', '3A', '3B']"
+            :terms="[
               {
-                name: 'Class Participation',
-                weightage: 0.1,
-              },
-              {
-                name: 'Lab Test 1',
-                weightage: 0.1,
-              },
-              {
-                name: 'Lab Test 2',
-                weightage: 0.25,
-              },
-              {
-                name: 'Group Project',
-                weightage: 0.25,
-              },
-              {
-                name: 'Final Exam',
-                weightage: 0.3,
+                term: 'AY2223/2',
+                assessment: [
+                  {
+                    name: 'Class Participation',
+                    weightage: 0.1,
+                  },
+                  {
+                    name: 'Lab Test 1',
+                    weightage: 0.1,
+                  },
+                  {
+                    name: 'Lab Test 2',
+                    weightage: 0.25,
+                  },
+                  {
+                    name: 'Group Project',
+                    weightage: 0.25,
+                  },
+                  {
+                    name: 'Final Exam',
+                    weightage: 0.3,
+                  },
+                ],
+                exam: {
+                  start: 1669813200,
+                  end: 1669820400,
+                  day: 3,
+                },
+                recommended: {
+                  hours: {
+                    homework: 0.3,
+                    lesson: 0.3,
+                    project: 0.4,
+                    total_weekly: 8,
+                  },
+                  year: 1,
+                },
               },
             ]"
             course-link="https://smu.sg/cdd-is112"
-            recommended-weekly-hours="2"
             :badges="[
               { imagePath: '/assets/projects.svg', name: 'Year 1' },
               { imagePath: '/assets/projects.svg', name: 'Projects' },
             ]"
-            :terms="['1', '2', '3A', '3B']"
           /><ModuleCard
-            title="IS216 Web Application Development II"
+            title="IS446 Managing Customer Relations with Analytics: Asian Insights"
             short-description="some short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short text"
             preclusion="CS101"
             prerequisite="CS101"
             corequisite="CS101"
-            exam-date-time="22 Sep 2022 8.30am"
-            exam-hours="2"
-            :course-assessments="[
+            :valid_terms="['1', '2', '3A', '3B']"
+            :terms="[
               {
-                name: 'Class Participation',
-                weightage: 0.1,
-              },
-              {
-                name: 'Lab Test 1',
-                weightage: 0.1,
-              },
-              {
-                name: 'Lab Test 2',
-                weightage: 0.25,
-              },
-              {
-                name: 'Group Project',
-                weightage: 0.25,
-              },
-              {
-                name: 'Final Exam',
-                weightage: 0.3,
+                term: 'AY2223/2',
+                assessment: [
+                  {
+                    name: 'Class Participation',
+                    weightage: 0.1,
+                  },
+                  {
+                    name: 'Lab Test 1',
+                    weightage: 0.1,
+                  },
+                  {
+                    name: 'Lab Test 2',
+                    weightage: 0.25,
+                  },
+                  {
+                    name: 'Group Project',
+                    weightage: 0.25,
+                  },
+                  {
+                    name: 'Final Exam',
+                    weightage: 0.3,
+                  },
+                ],
+                exam: {
+                  start: 1669813200,
+                  end: 1669820400,
+                  day: 3,
+                },
+                recommended: {
+                  hours: {
+                    homework: 0.3,
+                    lesson: 0.3,
+                    project: 0.4,
+                    total_weekly: 8,
+                  },
+                  year: 1,
+                },
               },
             ]"
-            course-link="https://smu.sg/cdd-is216"
-            recommended-weekly-hours="2"
+            course-link="https://smu.sg/cdd-is112"
             :badges="[
               { imagePath: '/assets/projects.svg', name: 'Year 1' },
               { imagePath: '/assets/projects.svg', name: 'Projects' },
             ]"
-            :terms="['1', '2', '3A', '3B']"
-          /><ModuleCard
-            title="IS210 Business Process Analysis & Solutioning"
-            short-description="some short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short text"
-            preclusion="CS101"
-            prerequisite="CS101"
-            corequisite="CS101"
-            exam-date-time="22 Sep 2022 8.30am"
-            exam-hours="2"
-            :course-assessments="[
-              {
-                name: 'Class Participation',
-                weightage: 0.1,
-              },
-              {
-                name: 'Lab Test 1',
-                weightage: 0.1,
-              },
-              {
-                name: 'Lab Test 2',
-                weightage: 0.25,
-              },
-              {
-                name: 'Group Project',
-                weightage: 0.25,
-              },
-              {
-                name: 'Final Exam',
-                weightage: 0.3,
-              },
-            ]"
-            course-link="https://smu.sg/cdd-is210"
-            recommended-weekly-hours="2"
-            :badges="[
-              { imagePath: '/assets/projects.svg', name: 'Year 1' },
-              { imagePath: '/assets/projects.svg', name: 'Projects' },
-            ]"
-            :terms="['1', '2', '3A', '3B']"
           />
         </div>
       </div>
