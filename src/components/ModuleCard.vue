@@ -1,9 +1,11 @@
 <template>
   <div
-    class="dark:bg-gray-800 px-16 py-9 rounded-2xl flex space-x-10 max-w-screen-2xl"
+    class="dark:bg-gray-800 px-6 py-6 md:px-8 md:py-8 lg:px-16 lg:py-9 rounded-2xl flex flex-col lg:flex-row justify-between space-y-10 lg:space-x-10 max-w-screen-2xl"
   >
-    <section class="min-w-[70%]">
-      <h1 class="text-3xl dark:text-blue-300 text-blue-600 font-extrabold">
+    <section>
+      <h1
+        class="text-xl lg:text-3xl dark:text-blue-300 text-blue-600 font-extrabold"
+      >
         {{ title }}
       </h1>
       <div class="flex space-x-2 mt-3">
@@ -11,10 +13,12 @@
           <Badge :badge-name="badge.name" :badge-image-path="badge.imagePath" />
         </div>
       </div>
-      <p class="text-lg dark:text-gray-300 text-gray-500 mt-3 pt-2 pb-2">
+      <p
+        class="text-sm lg:text-lg dark:text-gray-300 text-gray-500 mt-3 pt-2 pb-2"
+      >
         {{ shortDescription }}
       </p>
-      <div class="text-black dark:text-gray-300">
+      <div class="text-xs lg:text-lg text-black dark:text-gray-300">
         <p class="font-bold mt-3">Preclusions:</p>
         <p class="mt-2">{{ preclusion }}</p>
         <p class="font-bold mt-3">Prerequisite:</p>
@@ -24,44 +28,65 @@
       </div>
     </section>
 
-    <section>
-      <div class="flex w-[21rem] text-black dark:text-gray-300">
+    <section class="text-xs lg:text-base">
+      <div class="flex text-black dark:text-gray-300">
         <button
-          v-for="term in terms"
+          v-for="term in valid_terms"
           :key="term"
-          class="px-3 pb-2 border-b text-sm font-medium text-[#6B7280;]"
+          @click="updateSelectedTerm(term)"
+          class="px-3 pb-2 border-b w-[5rem] lg:w-[6rem] font-medium text-[#6B7280;]"
+          :class="{
+            'border-b-2 dark:border-b-blue-300 border-b-blue-600 dark:text-blue-300 text-blue-600':
+              isTermSelected(term),
+          }"
+          :disabled="isTermValid(term)"
         >
           Term {{ term }}
         </button>
       </div>
-      <div class="mt-5 space-y-3 text-sm px-3 dark:text-gray-300">
+      <div class="mt-5 space-y-3 px-6 dark:text-gray-300">
         <div>
-          <h3 class="font-bold">Exams:</h3>
-          <p class="mt-2">{{ examDateTime }} • {{ examHours }} hrs</p>
+          <div class="font-bold mb-2">Exams:</div>
+          <div>
+            {{ format(terms[selectedIndex].exam.start, "dd-MMMM-yyyy") }} •
+            {{
+              getTimeDifference(
+                terms[selectedIndex].exam.start,
+                terms[selectedIndex].exam.end
+              )
+            }}
+            hrs
+          </div>
         </div>
         <div>
-          <h3 class="font-bold">Course Assessment:</h3>
+          <div class="font-bold mb-2">Course Assessment:</div>
           <div
-            v-for="(courseAssessment, index) in courseAssessments"
+            v-for="(assessment, index) in terms[selectedIndex].assessment"
             :key="index"
             class="flex items-center space-x-2"
           >
-            <p class="w-32">{{ courseAssessment.name }}</p>
-            <p class="w-8">{{ courseAssessment.weightage * 100 }}%</p>
-            <div class="flex space-x-0.5">
+            <div class="w-32">{{ assessment.name }}</div>
+            <div class="w-8">{{ assessment.weightage * 100 }}%</div>
+            <div class="hidden sm:flex space-x-0.5">
               <div
                 v-for="(_, index) in Array(
-                  Math.ceil(Number(courseAssessment.weightage) * 10)
+                  Math.floor(assessment.weightage * 10)
                 )"
                 :key="index"
-                class="h-2.5 w-[calc(1rem)] bg-blue-100"
+                class="h-2.5 w-4 rounded-sm bg-blue-100"
+              ></div>
+              <div
+                v-if="(assessment.weightage * 100) % 10 !== 0"
+                class="h-2.5 w-2 rounded-l-sm bg-blue-100"
               ></div>
             </div>
           </div>
         </div>
         <div>
-          <h3 class="font-bold">Estimated Hours:</h3>
-          <p class="mt-2">{{ recommendedWeeklyHours }} hrs</p>
+          <div class="font-bold mb-2">Estimated Hours:</div>
+          <div>
+            {{ terms[selectedIndex].recommended.hours.total_weekly }} hrs
+          </div>
         </div>
 
         <div>
@@ -76,7 +101,36 @@
 
 <script>
 import Badge from "./Badge.vue";
+import { ref } from "vue";
+import { format } from "date-fns";
+
 export default {
+  setup(props) {
+    console.log(props.terms[0].assessment);
+    let selectedIndex = ref(0);
+    return { selectedIndex };
+  },
+  methods: {
+    format,
+    getTimeDifference(start, end) {
+      const difference =
+        (new Date(end).getTime() - new Date(start).getTime()) / 3600;
+      return difference;
+    },
+    updateSelectedTerm(term) {
+      this.selectedIndex = this.terms
+        .map((item) => item.term.split("/")[1])
+        .indexOf(term);
+    },
+    isTermValid(term) {
+      // check if `term` exists in this.terms
+      return !this.terms.some((item) => item.term.split("/")[1] === term);
+    },
+    isTermSelected(term) {
+      // check if `term` exists in this.terms
+      return term === this.terms[this.selectedIndex].term.split("/")[1];
+    },
+  },
   props: {
     title: String,
     badges: {
@@ -91,8 +145,19 @@ export default {
     },
     terms: {
       validator(value) {
-        // The value must be an Array of Objects and have id as a property
-        // eg. ["1", "2", "3A", "3B"]
+        // The value must be an Array of Objects
+        // TODO: Extract as a full validation function
+        return (
+          Array.isArray(value) &&
+          value.every(
+            (item) =>
+              item.term && item.assessment && item.exam && item.recommended
+          )
+        );
+      },
+    },
+    valid_terms: {
+      validator(value) {
         return (
           Array.isArray(value) &&
           value.every(
@@ -105,19 +170,6 @@ export default {
     preclusion: String,
     prerequisite: String,
     corequisite: String,
-    examDateTime: String,
-    examHours: [String, Number],
-    courseAssessments: {
-      validator(value) {
-        // The value must be an Array of Objects and have id as a property
-        // eg. [{ name: "1", weightage: 0.5 }, { name: "2", weightage: 0.5 }]
-        return (
-          Array.isArray(value) &&
-          value.every((item) => item.name && item.weightage)
-        );
-      },
-    },
-    recommendedWeeklyHours: [String, Number],
     courseLink: String,
   },
   components: { Badge },
