@@ -3,7 +3,7 @@
         :class="{'w-20 min-w-[5rem]':showSideBar}">
         <Button @click="showSideBar = !showSideBar" class=" text-gray-500  absolute right-5 top-9 dark:text-gray-400"
             :class="{'rotate-180':showSideBar}">
-            <img class="w-6 h-6" src="../assets/arrowLeft.svg" alt="">
+            <img class="w-6 h-6" src="/assets/arrowLeft.svg" alt="">
         </Button>
         <div class="inline-flex">
             <h1 class="block float-left font-bold tracking-widest p-[10px] dark:text-white"
@@ -17,7 +17,7 @@
                     <a href='/'
                         class="flex items-center text-base font-normal text-gray-900 rounded-lg dark:text-white ">
                         <img class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 "
-                            src="../assets/timetable.svg">
+                            src="/assets/timetable.svg">
                         <span class="ml-3" :class="{'hidden':showSideBar}">Timetable</span>
                     </a>
                 </div>
@@ -27,7 +27,7 @@
                     <a href='/'
                         class="flex items-center text-base font-normal text-gray-900 rounded-lg dark:text-white ">
                         <img class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 "
-                            src="../assets/modules.svg">
+                            src="/assets/modules.svg">
                         <span class="ml-3" :class="{'hidden':showSideBar}">Modules</span>
                     </a>
                 </div>
@@ -38,7 +38,7 @@
                     <a href='/'
                         class="flex items-center text-base font-normal text-gray-900 rounded-lg dark:text-white ">
                         <img class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 "
-                            src="../assets/settings.svg">
+                            src="/assets/settings.svg">
                         <span class="ml-3" :class="{'hidden':showSideBar}">Settings</span>
                     </a>
                 </div>
