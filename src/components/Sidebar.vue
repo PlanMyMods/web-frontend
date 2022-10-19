@@ -1,12 +1,12 @@
 <template>
-    <div class="bg-gray-50 dark:bg-gray-800 p-5 relative h-screen min-w-[14rem] duration-300 w-56 hidden sm:block"
+    <div class="bg-gray-50 dark:bg-gray-800 p-5 relative h-screen min-w-[14rem] duration-300 w-56 hidden md:block"
         :class="{'w-20 min-w-[5rem]':showSideBar}">
         <Button @click="showSideBar = !showSideBar"
-            class=" text-gray-500  absolute rounded-full border border-solid border-gray-200 bg-gray-50 -right-4 top-14 dark:text-gray-400"
+            class=" text-gray-500  absolute rounded-full border border-solid border-gray-200 dark:border-gray-500 dark:bg-gray-800 bg-gray-50 -right-4 top-14 dark:text-gray-400 "
             :class="{'rotate-180':showSideBar}">
             <img class="w-4 h-4" src="../assets/arrowLeft.svg" alt="">
         </Button>
-        <ul class="space-y-2 p-[10px]  " :class="{'px-0':showSideBar}">
+        <ul class="space-y-2 p-[10px]" :class="{'px-0':showSideBar}">
             <li>
                 <div class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700">
                     <a href='/'
