@@ -14,22 +14,22 @@
         <ul class="space-y-2 p-[10px]  mt-[15px]" :class="{'px-0':showSideBar}">
             <li>
                 <div class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700">
-                    <a href='/'
+                    <router-link to ='/'
                         class="flex items-center text-base font-normal text-gray-900 rounded-lg dark:text-white ">
                         <img class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 "
                             src="../assets/timetable.svg">
                         <span class="ml-3" :class="{'hidden':showSideBar}">Timetable</span>
-                    </a>
+                    </router-link>
                 </div>
             </li>
             <li>
                 <div class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700">
-                    <a href='/'
+                    <router-link to = '/modules'
                         class="flex items-center text-base font-normal text-gray-900 rounded-lg dark:text-white ">
                         <img class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 "
                             src="../assets/modules.svg">
                         <span class="ml-3" :class="{'hidden':showSideBar}">Modules</span>
-                    </a>
+                </router-link>
                 </div>
             </li>
             <hr class=" border-gray-300 dark:border-gray-700" />
