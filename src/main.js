@@ -12,6 +12,7 @@ Vue.use(VueRouter)
 const routes = [
     {path: '/', component: Home}, 
     {path: '/modules', component: Modules}, 
+    
 ]
 
 const router = new VueRouter({
