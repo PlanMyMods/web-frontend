@@ -5,16 +5,11 @@
     <Navbar class="" />
     <div class="flex h-[calc(100vh-4rem)]">
       <Sidebar />
-      <div class="flex-auto dark:bg-gray-900 bg-grey-2 overflow-y-scroll">
+      <div class="flex-auto dark:bg-gray-900 bg-gray-50 h-screen overflow-y-scroll">
         <div class="items-center mx-auto max-w-screen-2xl p-10 space-y-5">
-          <ModuleCard
-            title="IS446 Managing Customer Relations with Analytics: Asian Insights"
+          <ModuleCard title="IS446 Managing Customer Relations with Analytics: Asian Insights"
             short-description="some short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short text"
-            preclusion="CS101"
-            prerequisite="CS101"
-            corequisite="CS101"
-            :valid_terms="['1', '2', '3A', '3B']"
-            :terms="[
+            preclusion="CS101" prerequisite="CS101" corequisite="CS101" :valid_terms="['1', '2', '3A', '3B']" :terms="[
               {
                 term: 'AY2223/2',
                 assessment: [
@@ -54,20 +49,13 @@
                   year: 1,
                 },
               },
-            ]"
-            course-link="https://smu.sg/cdd-is112"
-            :badges="[
+            ]" course-link="https://smu.sg/cdd-is112" :badges="[
               { imagePath: '/assets/projects.svg', name: 'Year 1' },
               { imagePath: '/assets/projects.svg', name: 'Projects' },
-            ]"
-          /><ModuleCard
-            title="IS446 Managing Customer Relations with Analytics: Asian Insights"
+            ]" />
+          <ModuleCard title="IS446 Managing Customer Relations with Analytics: Asian Insights"
             short-description="some short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short text"
-            preclusion="CS101"
-            prerequisite="CS101"
-            corequisite="CS101"
-            :valid_terms="['1', '2', '3A', '3B']"
-            :terms="[
+            preclusion="CS101" prerequisite="CS101" corequisite="CS101" :valid_terms="['1', '2', '3A', '3B']" :terms="[
               {
                 term: 'AY2223/2',
                 assessment: [
@@ -107,20 +95,13 @@
                   year: 1,
                 },
               },
-            ]"
-            course-link="https://smu.sg/cdd-is112"
-            :badges="[
+            ]" course-link="https://smu.sg/cdd-is112" :badges="[
               { imagePath: '/assets/projects.svg', name: 'Year 1' },
               { imagePath: '/assets/projects.svg', name: 'Projects' },
-            ]"
-          /><ModuleCard
-            title="IS446 Managing Customer Relations with Analytics: Asian Insights"
+            ]" />
+          <ModuleCard title="IS446 Managing Customer Relations with Analytics: Asian Insights"
             short-description="some short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short textsome short text"
-            preclusion="CS101"
-            prerequisite="CS101"
-            corequisite="CS101"
-            :valid_terms="['1', '2', '3A', '3B']"
-            :terms="[
+            preclusion="CS101" prerequisite="CS101" corequisite="CS101" :valid_terms="['1', '2', '3A', '3B']" :terms="[
               {
                 term: 'AY2223/2',
                 assessment: [
@@ -160,13 +141,10 @@
                   year: 1,
                 },
               },
-            ]"
-            course-link="https://smu.sg/cdd-is112"
-            :badges="[
+            ]" course-link="https://smu.sg/cdd-is112" :badges="[
               { imagePath: '/assets/projects.svg', name: 'Year 1' },
               { imagePath: '/assets/projects.svg', name: 'Projects' },
-            ]"
-          />
+            ]" />
         </div>
       </div>
     </div>
@@ -197,4 +175,6 @@ export default {
   },
 };
 </script>
-<style scoped></style>
+<style scoped>
+
+</style>
