@@ -1,6 +1,6 @@
 <template>
   <div
-    class="dark:bg-gray-800 px-6 py-6 md:px-8 md:py-8 lg:px-16 lg:py-9 rounded-2xl flex flex-col lg:flex-row justify-between space-y-10 lg:space-x-10 max-w-screen-2xl">
+    class="dark:bg-gray-800 px-6 py-6 md:px-8 md:py-8 lg:px-16 lg:py-9 rounded-2xl flex flex-col lg:flex-row justify-between space-y-10 lg:space-x-10 max-w-screen-2xl bg-gray-50">
     <section>
       <h1 class="text-xl lg:text-3xl dark:text-blue-300 text-blue-600 font-extrabold">
         {{ title }}
