@@ -7,6 +7,9 @@ import Home from './views/Home.vue'
 
 Vue.use(VueRouter)
 
+const Home = { template: '<div>Home</div>' }
+const Modules = { template: '<div>Modules</div>' }
+
 // will add more routes as we create more pages
 const routes = [
     {path: '/', component: Home}, 
@@ -17,5 +20,7 @@ const router = new VueRouter({
     routes, 
     mode: 'history'
 })
+
+App.use(router);
 
 createApp(App).mount("#app");
