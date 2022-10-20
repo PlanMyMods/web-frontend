@@ -180,6 +180,9 @@ import Button from "./components/Button.vue";
 import PageContentPlaceholder from "./components/PageContentPlaceholder.vue";
 import SampleContent from "./components/SampleContent.vue";
 import ModuleCard from "./components/ModuleCard.vue";
+import db from './firebase.js';
+import { doc, getDoc } from "firebase/firestore";
+
 export default {
   name: " App",
   components: {
@@ -192,9 +195,22 @@ export default {
   },
   data() {
     return {
-      childComponent: "SampleContent",
-    };
+      childComponent: 'SampleContent',
+    }
   },
-};
+  methods: {
+    async returndb(){
+      const docRef = doc(db, "Modules", "CS101");
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    }
+
+  } 
+}
 </script>
 <style scoped></style>
