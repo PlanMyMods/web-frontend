@@ -164,7 +164,7 @@
 </template>
 
 <script>
-import ModuleCard from "../components/ModuleCard.vue";
+import ModuleCard from "@/components/ModuleCard.vue";
 export default {
   name: "ModuleListView",
   components: { ModuleCard },
