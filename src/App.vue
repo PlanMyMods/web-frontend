@@ -172,7 +172,7 @@
     </div>
     <!-- This is for testing only! -->
     <button @click="getCoursePrerequisite(course)">Click here</button>
-    <button @click="returndb()">Here!</button>
+    <button @click="returndb2(course)">Here!</button>
   </main>
 </template>
 
@@ -184,7 +184,7 @@ import PageContentPlaceholder from "./components/PageContentPlaceholder.vue";
 import SampleContent from "./components/SampleContent.vue";
 import ModuleCard from "./components/ModuleCard.vue";
 import db from './firebase.js';
-import {collection, query, where, doc, getDoc } from "firebase/firestore";
+import {collection, query, where, doc, getDoc, onSnapshot } from "firebase/firestore";
 
 export default {
   name: " App",
@@ -214,6 +214,63 @@ export default {
         // doc.data() will be undefined in this case
         console.log("No such document!");
       }
+    },
+    //get a list of modules like: ['CS101', 'CS102', 'IS216']
+    async returnModuleArray(){
+      const modules = collection(db, "Modules");
+      const q = query(modules, where("code", "!=", ""));
+
+      onSnapshot(q, (snapshot) =>{
+        let modulelist = [];
+        snapshot.docs.forEach((doc) =>{
+          modulelist.push(doc.id)
+        })
+        if (modulelist.length > 0){
+          console.log(modulelist)
+          return modulelist
+        }
+        else{
+          console.log("No data or query error")
+        }
+      })
+    },
+    
+    //return every single module into an array of object
+    async returnModuleObject(){
+      const modules = collection(db, "Modules");
+      const q = query(modules, where("code", "!=", ""));
+
+      onSnapshot(q, (snapshot) =>{
+        let modulelist = [];
+        snapshot.docs.forEach((doc) =>{
+          modulelist.push({...doc.data()})
+        })
+        if (modulelist.length > 0){
+          console.log(modulelist)
+          return modulelist
+        }
+        else{
+          console.log("No data or query error")
+        }
+      })
+    },
+
+    async returndb2(code){
+      const modules = collection(db, "Modules", code);
+      const q = query(modules, where("prerequisite", "!=", ""));
+      //check for non-empty prereq,
+      //open and loop using snapshot
+
+      // const docRef = doc(db, "Modules", "IS216");
+      // const docSnap = await getDoc(docRef);
+      // console.log(docSnap.data().length)
+      // const prereq = docSnap.data();
+
+      // prereq.prerequisites.ref.forEach((doc) =>{
+      //   console.log(doc.data().path)
+      // })
+      // console.log(docSnap.data().prerequisites.ref[0].path);
+      
     },
 
     //-----------------------------------------Module Collection-----------------------------------------------
@@ -280,6 +337,18 @@ export default {
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
         console.log("Document data:", docSnap.data().prerequisites);
+        return docSnap.data().prerequisites;
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    },
+
+    async getCoursePrerequisite(code){
+      const docRef = doc(db, "Modules", code);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data().prerequisites.ref[0]);
         return docSnap.data().prerequisites;
       } else {
         // doc.data() will be undefined in this case
