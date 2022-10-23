@@ -10,56 +10,31 @@
     >
       <img class="w-4 h-4" src="/assets/arrowLeft.svg" alt="" />
     </Button>
-    <ul class="space-y-2 p-[10px]" :class="{ 'px-0': showSideBar }">
+    <ul class="space-y-2 px-0" :class="{ '': showSideBar }">
       <li>
-        <router-link to="/">
-          <div class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700">
-            <div
-              class="flex items-center text-base font-normal text-gray-900 rounded-lg dark:text-white"
-            >
-              <img
-                class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400"
-                src="/assets/timetable.svg"
-              />
-              <span class="ml-3" :class="{ hidden: showSideBar }"
-                >Timetable</span
-              >
-            </div>
-          </div>
-        </router-link>
+        <SidebarListItem
+          linkName="Timetable"
+          linkRoute="/timetable"
+          linkImagePath="/assets/timetable.svg"
+          :showSideBar="showSideBar"
+        />
       </li>
       <li>
-        <router-link to="/modules">
-          <div class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700">
-            <div
-              class="flex items-center text-base font-normal text-gray-900 rounded-lg dark:text-white"
-            >
-              <img
-                class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400"
-                src="/assets/modules.svg"
-              />
-              <span class="ml-3" :class="{ hidden: showSideBar }">Modules</span>
-            </div>
-          </div>
-        </router-link>
+        <SidebarListItem
+          linkName="Modules"
+          linkRoute="/modules"
+          linkImagePath="/assets/modules.svg"
+          :showSideBar="showSideBar"
+        />
       </li>
       <hr class="border-gray-300 dark:border-gray-700" />
       <li>
-        <router-link to="/settings">
-          <div class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700">
-            <div
-              class="flex items-center text-base font-normal text-gray-900 rounded-lg dark:text-white"
-            >
-              <img
-                class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400"
-                src="/assets/settings.svg"
-              />
-              <span class="ml-3" :class="{ hidden: showSideBar }"
-                >Settings</span
-              >
-            </div>
-          </div>
-        </router-link>
+        <SidebarListItem
+          linkName="Settings"
+          linkRoute="/settings"
+          linkImagePath="/assets/settings.svg"
+          :showSideBar="showSideBar"
+        />
       </li>
     </ul>
   </div>
@@ -68,6 +43,7 @@
 <script>
 import { ref } from "vue";
 import Button from "./Button.vue";
+import SidebarListItem from "./SidebarListItem.vue";
 
 export default {
   setup() {
@@ -76,6 +52,7 @@ export default {
   },
   components: {
     Button: Button,
+    SidebarListItem,
   },
 };
 </script>
