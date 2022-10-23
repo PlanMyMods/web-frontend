@@ -8,19 +8,211 @@
           <router-view />
         </div>
       </div>
+      <div>
+      <!-- This is for testing only! -->
+      <button @click="getCoursePrerequisite(course)">Click here</button>
+      <button @click="returnModuleArray()">Here!</button> 
     </div>
+    </div>
+
   </main>
 </template>
 
 <script>
 import Sidebar from "@/components/Sidebar.vue";
 import Navbar from "@/components/Navbar.vue";
+import db from './firebase.js';
+import {collection, query, where, doc, getDoc, onSnapshot} from "firebase/firestore";
 export default {
   name: "App",
   components: {
     Sidebar,
     Navbar,
   },
+  mounted(){
+    console.log(import.meta.env.VUE_APP_FIREBASE_PROJECT_ID)
+  },
+  data() {
+      return {
+        childComponent: 'SampleContent',
+        course: "IS216",
+        name: "Programming Fundamentals I"
+      }
+    },
+  methods: {
+      //get a list of modules like: ['CS101', 'CS102', 'IS216']
+      async returnModuleArray(){
+        const modules = collection(db, "Modules");
+        const q = query(modules, where("code", "!=", ""));
+  
+        onSnapshot(q, (snapshot) =>{
+          let modulelist = [];
+          snapshot.docs.forEach((doc) =>{
+            modulelist.push(doc.id)
+          })
+          if (modulelist.length > 0){
+            console.log(modulelist)
+            return modulelist
+          }
+          else{
+            console.log("No data or query error")
+          }
+        })
+      },
+      
+      //return every single module into an array of object
+      async returnModuleObject(){
+        const modules = collection(db, "Modules");
+        const q = query(modules, where("code", "!=", ""));
+  
+        onSnapshot(q, (snapshot) =>{
+          let modulelist = [];
+          snapshot.docs.forEach((doc) =>{
+            modulelist.push({...doc.data()})
+          })
+          if (modulelist.length > 0){
+            console.log(modulelist)
+            return modulelist
+          }
+          else{
+            console.log("No data or query error")
+          }
+        })
+      },
+      //
+      //prereq
+      async returndb2(code){
+        const modules = collection(db, "Modules");
+        const q = query(modules, where("code", "==", code), where("prerequisites", "!=", ""));
+        console.log("checkpoint");
+        //check for non-empty prereq,
+        //open and loop using snapshot
+        
+        onSnapshot(q, (snapshot) =>{
+          let modulelist = [];
+          snapshot.docs.forEach((docs) =>{
+            modulelist.push({...docs.data()})
+          })
+          if (modulelist.length > 0){
+            console.log(modulelist)
+            return modulelist
+          }
+          else{
+            console.log("No data or query error")
+          }
+        })
+        
+          //https://firebase.google.com/docs/reference/node/firebase.database.DataSnapshot (for the foreach)
+        // const docRef = doc(db, "Modules", code);
+        // const docSnap = await getDoc(docRef);
+        // console.log("data:" , docSnap.data().prerequisites.ref)
+        // const prereq = docSnap.data().prerequisites.ref;
+  
+        // docSnap.data().prerequisites.ref.forEach((doc) =>{
+        //   console.log(doc.data())
+        // })
+        // console.log(docSnap.data().prerequisites.ref[0].path);
+        
+      },
+  
+      //-----------------------------------------Module Collection-----------------------------------------------
+      //call the full details of each course by course code;
+      //returns the object of the whole course
+      async getFullCoursebyCode(code){
+        const docRef = doc(db, "Modules", code);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          console.log("Document data:", docSnap.data());
+          return docSnap.data();
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+        }
+      },
+  
+      //call the full details of each course by course name;
+      //returns the object of the whole course
+      async getFullCoursebyName(name){
+        const module = collection(db, "Modules");
+        const q = query(module, where("name", "==", name));
+  
+        onSnapshot(q, (snapshot) =>{
+          let modulelist = [];
+          snapshot.docs.forEach((doc) =>{
+            modulelist.push({...doc.data()})
+          })
+          if (modulelist.length > 0){
+            console.log(modulelist[0])
+            return(modulelist[0])
+          }
+          else {
+            console.log("Module name incorrect/no such module")
+          }
+        })
+      },
+      
+       //call the course name of each course by course code;
+      //returns a string of the course name
+      async getCourseName(code){
+        const docRef = doc(db, "Modules", code);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          console.log("Document data:", docSnap.data().name);
+          return docSnap.data().name;
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+        }
+      },
+  
+      //call the course description of each course by course code;
+      //returns an object of the long & short description
+      async getCourseDescription(code){
+        const docRef = doc(db, "Modules", code);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          console.log("Document data:", docSnap.data().description);
+          return docSnap.data().description;
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+        }
+      },
+  
+      //call the course link of each course by course code;
+      //returns a string of the link
+      async getCourseLink(code){
+        const docRef = doc(db, "Modules", code);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          console.log("Document data:", docSnap.data().link);
+          return docSnap.data().link;
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+        }
+      },
+      
+      //call the course prerequisite of each course by course code;
+      //returns a string of the link
+      async getCoursePrerequisite(code){
+        const docRef = doc(db, "Modules", code);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          console.log("Document data:", docSnap.data().prerequisites);
+          return docSnap.data().prerequisites;
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+        }
+      },
+  
+      //---------------------------------------Professor Collection---------------------------------------------
+      
+  
+  
+    } 
+
 };
 </script>
 
