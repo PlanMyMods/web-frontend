@@ -171,7 +171,7 @@
       </div>
     </div>
     <!-- This is for testing only! -->
-    <button @click="getCoursePrerequisite(course)">Click here</button>
+    <button @click="getFullCoursebyName(name)">Click here</button>
     <button @click="returndb2(course)">Here!</button>
   </main>
 </template>
@@ -199,22 +199,11 @@ export default {
   data() {
     return {
       childComponent: 'SampleContent',
-      course: "IS216"
+      course: "IS216",
+      name: "Programming Fundamentals I"
     }
   },
   methods: {
-    //Sample code: return everything in each course code
-    async returndbSample(){
-      const docRef = doc(db, "Modules", "IS101");
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
-        return docSnap.data();
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-      }
-    },
     //get a list of modules like: ['CS101', 'CS102', 'IS216']
     async returnModuleArray(){
       const modules = collection(db, "Modules");
@@ -256,27 +245,44 @@ export default {
     },
 
     async returndb2(code){
-      const modules = collection(db, "Modules", code);
-      const q = query(modules, where("prerequisite", "!=", ""));
-      //check for non-empty prereq,
-      //open and loop using snapshot
+      // const modules = collection(db, "Modules");
+      // console.log("checkpoint");
+      // const q = query(modules,where("code", "==", code), where("prerequisite", "!=", ""));
+      // //check for non-empty prereq,
+      // //open and loop using snapshot
+      // console.log("checkpoint2");
 
-      // const docRef = doc(db, "Modules", "IS216");
-      // const docSnap = await getDoc(docRef);
-      // console.log(docSnap.data().length)
-      // const prereq = docSnap.data();
-
-      // prereq.prerequisites.ref.forEach((doc) =>{
-      //   console.log(doc.data().path)
+      // onSnapshot(q, (snapshot) =>{
+      //   console.log("checkpoint3")
+      //   let modulelist = [];
+      //   snapshot.docs.forEach((doc) =>{
+      //     modulelist.push({...doc.data()})
+      //   })
+      //   if (modulelist.length > 0){
+      //     console.log(modulelist)
+      //     return modulelist
+      //   }
+      //   else{
+      //     console.log("No data or query error")
+      //   }
       // })
-      // console.log(docSnap.data().prerequisites.ref[0].path);
+        //https://firebase.google.com/docs/reference/node/firebase.database.DataSnapshot (for the foreach)
+      const docRef = doc(db, "Modules", code);
+      const docSnap = await getDoc(docRef);
+      console.log("data:" , docSnap.data())
+      const prereq = docSnap.data().prerequisites;
+
+      prereq.ref.forEach((doc) =>{
+        console.log(doc.data())
+      })
+      console.log(docSnap.data().prerequisites.ref[0].path);
       
     },
 
     //-----------------------------------------Module Collection-----------------------------------------------
     //call the full details of each course by course code;
     //returns the object of the whole course
-    async getFullCourse(code){
+    async getFullCoursebyCode(code){
       const docRef = doc(db, "Modules", code);
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
@@ -286,6 +292,27 @@ export default {
         // doc.data() will be undefined in this case
         console.log("No such document!");
       }
+    },
+
+    //call the full details of each course by course name;
+    //returns the object of the whole course
+    async getFullCoursebyName(name){
+      const module = collection(db, "Modules");
+      const q = query(module, where("name", "==", name));
+
+      onSnapshot(q, (snapshot) =>{
+        let modulelist = [];
+        snapshot.docs.forEach((doc) =>{
+          modulelist.push({...doc.data()})
+        })
+        if (modulelist.length > 0){
+          console.log(modulelist[0])
+          return(modulelist[0])
+        }
+        else {
+          console.log("Module name incorrect/no such module")
+        }
+      })
     },
     
      //call the course name of each course by course code;
@@ -343,20 +370,6 @@ export default {
         console.log("No such document!");
       }
     },
-
-    async getCoursePrerequisite(code){
-      const docRef = doc(db, "Modules", code);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data().prerequisites.ref[0]);
-        return docSnap.data().prerequisites;
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-      }
-    },
-
-    //retrieve keys: find out how to query them
 
     //---------------------------------------Professor Collection---------------------------------------------
     
