@@ -1,6 +1,6 @@
 <template>
   <div
-    class="dark:bg-gray-800 px-6 py-6 md:px-8 md:py-8 lg:px-16 lg:py-9 rounded-2xl flex flex-col xl:flex-row justify-between space-y-10 lg:space-x-10 max-w-screen-2xl bg-gray-50 lg:grid lg:grid-cols-4">
+    class="dark:bg-gray-800 px-6 py-6 md:px-8 md:py-8 lg:px-16 lg:py-9 rounded-2xl flex flex-col xl:flex-row justify-between space-y-10 lg:space-x-10 max-w-screen-2xl bg-gray-50 lg:grid lg:grid-cols-4 xl:grid-cols-5">
     <section class="lg:col-span-2 xl:col-span-3">
       <h1 class="text-xl lg:text-3xl dark:text-blue-300 text-blue-600 font-extrabold">
         {{ title }}
@@ -23,7 +23,7 @@
       </div>
     </section>
 
-    <section class="text-xs lg:text-base lg:col-span-2 xl:col-span-1">
+    <section class="text-xs lg:text-base lg:col-span-2">
       <div class="flex text-black dark:text-gray-300">
         <button v-for="term in valid_terms" :key="term" @click="updateSelectedTerm(term)"
           class="px-3 pb-2 border-b w-[5rem] lg:w-[6rem] font-medium text-[#6B7280;]" :class="{
