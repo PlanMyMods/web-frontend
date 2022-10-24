@@ -6,7 +6,7 @@ import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
     apiKey: import.meta.env.VUE_APP_FIREBASE_API_KEY,
     authDomain: import.meta.env.VUE_APP_FIREBASE_PROJECT_ID+".firebaseapp.com",
-    databaseURL: "https://"+import.meta.env.VUE_APP_FIREBASE_PROJECT_ID+"-default-rtdb.asia-southeast1.firebasedatabase.app",
+    databaseURL: import.meta.env.VUE_APP_FIREBASE_DATABASE_URL,
     projectId: "is216---g6---t10",
     storageBucket: import.meta.env.VUE_APP_FIREBASE_PROJECT_ID+".appspot.com",
     messagingSenderId: import.meta.env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID,
