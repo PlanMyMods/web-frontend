@@ -25,7 +25,6 @@ export default {
     Navbar,
   },
   mounted(){
-    console.log(import.meta.env.VUE_APP_FIREBASE_PROJECT_ID)
   },
   data() {
       return {
