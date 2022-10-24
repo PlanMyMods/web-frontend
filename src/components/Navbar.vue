@@ -48,7 +48,7 @@
 import { ref } from "vue";
 import Button from "./Button.vue";
 import NavbarButtons from "./NavbarButtons.vue";
-import Searchbar from "./SearchBar.vue";
+import Searchbar from "./Searchbar.vue";
 
 export default {
   setup() {
