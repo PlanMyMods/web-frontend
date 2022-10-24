@@ -33,6 +33,7 @@ export default {
       }
     },
   methods: {
+    //-----------------------------------------Module Collection-----------------------------------------------
       //get a list of modules like: ['CS101', 'CS102', 'IS216']
       async returnModuleArray(){
         const modules = collection(db, "Modules");
@@ -72,43 +73,7 @@ export default {
           }
         })
       },
-      //
-      //prereq
-      async returndb2(code){
-        const modules = collection(db, "Modules");
-        const q = query(modules, where("code", "==", code), where("prerequisites", "!=", ""));
-        console.log("checkpoint");
-        //check for non-empty prereq,
-        //open and loop using snapshot
-        
-        onSnapshot(q, (snapshot) =>{
-          let modulelist = [];
-          snapshot.docs.forEach((docs) =>{
-            modulelist.push({...docs.data()})
-          })
-          if (modulelist.length > 0){
-            console.log(modulelist)
-            return modulelist
-          }
-          else{
-            console.log("No data or query error")
-          }
-        })
-        
-          //https://firebase.google.com/docs/reference/node/firebase.database.DataSnapshot (for the foreach)
-        // const docRef = doc(db, "Modules", code);
-        // const docSnap = await getDoc(docRef);
-        // console.log("data:" , docSnap.data().prerequisites.ref)
-        // const prereq = docSnap.data().prerequisites.ref;
   
-        // docSnap.data().prerequisites.ref.forEach((doc) =>{
-        //   console.log(doc.data())
-        // })
-        // console.log(docSnap.data().prerequisites.ref[0].path);
-        
-      },
-  
-      //-----------------------------------------Module Collection-----------------------------------------------
       //call the full details of each course by course code;
       //returns the object of the whole course
       async getFullCoursebyCode(code){
