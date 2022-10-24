@@ -8,11 +8,6 @@
           <router-view />
         </div>
       </div>
-      <div>
-      <!-- This is for testing only! -->
-      <button @click="getCoursePrerequisite(course)">Click here</button>
-      <button @click="returnModuleArray()">Here!</button> 
-    </div>
     </div>
 
   </main>
@@ -35,8 +30,6 @@ export default {
   data() {
       return {
         childComponent: 'SampleContent',
-        course: "IS216",
-        name: "Programming Fundamentals I"
       }
     },
   methods: {
