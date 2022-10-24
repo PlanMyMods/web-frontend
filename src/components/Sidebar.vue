@@ -10,7 +10,7 @@
       </div>
       <ul class="space-y-2 px-0" :class="{ '': showSideBar }">
         <li>
-          <SearchBar />
+          <Searchbar />
         </li>
         <li>
           <SidebarListItem linkName="Timetable" linkRoute="/timetable" linkImagePath="/assets/timetable.svg"
@@ -35,7 +35,7 @@
 import { ref } from "vue";
 import Button from "./Button.vue";
 import SidebarListItem from "./SidebarListItem.vue";
-import SearchBar from "./SearchBar.vue";
+import SearchBar from "./Searchbar.vue";
 
 export default {
   setup() {
@@ -46,7 +46,7 @@ export default {
   components: {
     Button: Button,
     SidebarListItem,
-    SearchBar
+    Searchbar: SearchBar,
   },
 };
 </script>
