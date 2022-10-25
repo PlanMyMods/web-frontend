@@ -5,7 +5,7 @@
     <div class="flex h-screen">
       <Sidebar />
       <div class="flex-auto dark:bg-gray-900 bg-grey-2 overflow-y-scroll">
-        <div class="items-center mx-auto max-w-screen-2xl p-10 space-y-5 h">
+        <div class="items-center mx-auto max-w-screen-2xl p-10 space-y-5">
           <router-view />
         </div>
       </div>
