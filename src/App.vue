@@ -16,9 +16,6 @@
 <script>
 import Sidebar from "@/components/Sidebar.vue";
 import Navbar from "@/components/Navbar.vue";
-import * as firebase from "@/utils/firebasemethod.js";
-//import db from './firebase.js';
-//import {collection, query, where, doc, getDoc, onSnapshot} from "firebase/firestore";
 export default {
   name: "App",
 
@@ -26,11 +23,6 @@ export default {
     Sidebar,
     Navbar,
   },
-  data() {
-      return {
-        childComponent: 'SampleContent',
-      }
-    }
 
 };
 </script>

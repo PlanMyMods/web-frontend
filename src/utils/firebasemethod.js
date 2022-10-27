@@ -1,5 +1,5 @@
 import db from '../firebase.js';
-import {collection, query, where, doc, getDocs, onSnapshot} from "firebase/firestore";
+import {collection, query, where, doc, getDocs, getDoc} from "firebase/firestore";
 
 
 //------------------------------------Module Collection-------------------------------------------
