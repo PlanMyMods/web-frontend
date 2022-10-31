@@ -8,9 +8,7 @@
         <div
           class="items-center mx-auto max-w-screen-2xl p-8 lg:p-10 space-y-5"
         >
-          <Suspense>
-            <router-view />
-          </Suspense>
+          <router-view />
         </div>
       </div>
     </div>
