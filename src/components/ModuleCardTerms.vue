@@ -1,5 +1,5 @@
 <template>
-  <div class="flex text-black dark:text-gray-300">
+  <div class="flex">
     <button
       v-for="term in validTerms"
       :key="term"
@@ -8,7 +8,7 @@
       :class="{
         'border-b-2 dark:border-b-blue-300 border-b-blue-600 dark:text-blue-300 text-blue-600':
           isTermSelected(term),
-        'dark:text-gray-500 text-gray-700': !isTermValid(term),
+        'dark:text-gray-500 text-gray-400': !isTermValid(term),
       }"
       :disabled="!isTermValid(term)"
     >
@@ -46,14 +46,14 @@
           ></div>
           <div
             v-if="(assessment.weightage * 100) % 10 !== 0"
-            class="h-2.5 w-3 rounded-l-sm dark:bg-blue-10 bg-blue-400"
+            class="h-2.5 w-3 rounded-l-sm dark:bg-blue-100 bg-blue-400"
           ></div>
         </div>
       </div>
     </div>
     <div v-if="hasProperty(terms[selectedIndex].recommended)">
-      <div class="font-bold mb-2">Estimated Hours:</div>
-      <div>{{ terms[selectedIndex].recommended.hours.total_weekly }} hrs</div>
+      <div class="font-bold mb-2">Estimated Weekly Hours:</div>
+      <div>{{ terms[selectedIndex].recommended.hours.total }} hrs</div>
     </div>
     <div>
       <a

@@ -1,5 +1,5 @@
 <template>
-  <div class="text-xs lg:text-base text-black dark:text-gray-300">
+  <div class="text-xs lg:text-base">
     <div class="font-bold mt-3">Preclusions:</div>
     <div v-html="transformedPreclusionString" />
     <div class="font-bold mt-3 mb-2">Prerequisite:</div>

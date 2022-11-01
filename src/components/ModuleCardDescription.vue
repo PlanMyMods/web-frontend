@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="block-content text-xs lg:text-base dark:text-gray-300 text-gray-500"
-  >
+  <div class="block-content text-xs lg:text-base">
     <transition
       @before-enter="onBeforeEnter"
       @enter="onEnter"
