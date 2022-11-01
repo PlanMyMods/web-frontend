@@ -15,6 +15,12 @@ In this project, we aim to build a web-based application for SMU students to be 
 Run the following command to setup and run a local copy of the project.
 
 ```bash
+# create a .env file from the sample
+# remember to update the values in the env file with the right values!
+cp ./.env.sample ./.env
+```
+
+```bash
 # clone the project
 git clone https://github.com/SMU-IS216G6T10/smumods-frontend.git
 ```
