@@ -23,6 +23,19 @@ export default {
       moduleList: [],
     };
   },
+  computed: {
+    orderedModuleList() {
+      return this.moduleList.sort((a, b) => {
+        if (a.code < b.code) {
+          return -1;
+        }
+        if (a.code > b.code) {
+          return 1;
+        }
+        return 0;
+      });
+    },
+  },
   methods: {
     returnModuleObject,
   },

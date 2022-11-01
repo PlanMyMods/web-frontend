@@ -19,7 +19,7 @@
     <div v-if="hasProperty(terms[selectedIndex].exam)">
       <div class="font-bold mb-2">Exams:</div>
       <div>
-        {{ format(terms[selectedIndex].exam.start, "dd-MMM-yyyy") }} •
+        {{ formatUnixTime(terms[selectedIndex].exam.start, "dd-MMM-yyyy") }} •
         {{
           getTimeDifference(
             terms[selectedIndex].exam.start,
@@ -32,7 +32,7 @@
     <div v-if="hasProperty(terms[selectedIndex].assessment)">
       <div class="font-bold mb-2">Course Assessment:</div>
       <div
-        v-for="(assessment, index) in terms[selectedIndex].assessment"
+        v-for="(assessment, index) in assessments"
         :key="index"
         class="flex items-center space-x-2"
       >
@@ -82,7 +82,9 @@ export default {
     courseLink: String,
   },
   methods: {
-    format,
+    formatUnixTime(time, formatString) {
+      return format(new Date(time * 1000), formatString);
+    },
     getTimeDifference(start, end) {
       const difference =
         (new Date(end).getTime() - new Date(start).getTime()) / 3600;
@@ -102,6 +104,16 @@ export default {
     },
     hasProperty(property) {
       return property !== undefined || property !== null;
+    },
+  },
+  computed: {
+    assessments() {
+      const assessments = this.terms[this.selectedIndex].assessment;
+      // sorts by assessment name in ascending order
+      assessments.sort((a, b) =>
+        a.name > b.name ? 1 : b.name > a.name ? -1 : 0
+      );
+      return assessments;
     },
   },
 };
