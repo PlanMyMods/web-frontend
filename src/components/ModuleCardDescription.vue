@@ -114,17 +114,14 @@ export default {
   /* default line-height is 24px */
   max-height: calc(24px * v-bind(visibleLines));
   overflow: hidden;
-  color: white;
 }
 .block-content__paragraph {
-  color: white;
   overflow: hidden;
 }
 .block-content__paragraph.block-content__paragraph--is-expanded {
   overflow: initial;
 }
 .block-content__button {
-  color: white;
   text-decoration: underline;
   align-self: flex-end;
 }

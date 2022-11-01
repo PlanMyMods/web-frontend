@@ -6,7 +6,7 @@
       <div
         class="text-lg md:text-lg lg:text-2xl dark:text-blue-300 text-blue-600 font-extrabold"
       >
-        {{ mod.name }}
+        {{ `${mod.code} ${mod.name}` }}
       </div>
       <div class="flex space-x-2 mt-3">
         <Badge
@@ -48,6 +48,9 @@ export default {
   methods: {
     validTerm(terms) {
       return terms.length > 0;
+    },
+    test() {
+      return this.whaasndaosfno;
     },
   },
   props: {

@@ -42,11 +42,11 @@
           <div
             v-for="(_, index) in Array(Math.floor(assessment.weightage * 10))"
             :key="index"
-            class="h-2.5 w-6 rounded-sm bg-blue-100"
+            class="h-2.5 w-6 rounded-sm dark:bg-blue-100 bg-blue-400"
           ></div>
           <div
             v-if="(assessment.weightage * 100) % 10 !== 0"
-            class="h-2.5 w-3 rounded-l-sm bg-blue-100"
+            class="h-2.5 w-3 rounded-l-sm dark:bg-blue-10 bg-blue-400"
           ></div>
         </div>
       </div>
