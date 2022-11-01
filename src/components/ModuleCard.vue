@@ -49,9 +49,6 @@ export default {
     validTerm(terms) {
       return terms.length > 0;
     },
-    test() {
-      return this.whaasndaosfno;
-    },
   },
   props: {
     mod: {
