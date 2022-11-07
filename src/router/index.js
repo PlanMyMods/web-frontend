@@ -8,6 +8,7 @@ const routes = [
   { path: "/timetable", name: "Timetable", component: Timetable },
   { path: "/modules", name: "Modules", component: ModuleListView },
   { path: "/settings", name: "Settings", component: Settings },
+  { path: "/register", name: "Register", component: Register },
 ];
 
 const router = createRouter({
