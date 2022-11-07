@@ -23,7 +23,7 @@ const register = () => {
     createUserWithEmailAndPassword(getAuth(), email.value, password.value)
         .then((data) => {
             console.log("Registration successful!");
-            router.push("/"); // redirect them to homepage (in this case, timetable)
+            router.push("/timetable"); // redirect them to timetable page
         })
         .catch((error) => {
             console.log(error.code);
