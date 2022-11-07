@@ -10,6 +10,7 @@
 <script setup>
 import { ref } from "vue";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import Button from "@/components/Button.vue";
 
 const email = ref("");
 const password = ref("");

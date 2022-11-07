@@ -25,6 +25,11 @@
           <SidebarListItem linkName="Settings" linkRoute="/settings" linkImagePath="/assets/settings.svg"
             :showSideBar="showSideBar" />
         </li>
+
+        <li>
+          <SidebarListItem linkName="Register" linkRoute="/register" linkImagePath="/assets/register.svg"
+            :showSideBar="showSideBar" />
+        </li>
       </ul>
     </div>
   </div>
