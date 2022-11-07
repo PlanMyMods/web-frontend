@@ -31,9 +31,5 @@ const register = () => {
         });
 };
 
-const signInWithGoogle = () => {
-
-}
-
 
 </script>
