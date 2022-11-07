@@ -20,6 +20,7 @@ const router = useRouter();
 const register = () => {
 
     const auth = getAuth();
+    
     createUserWithEmailAndPassword(getAuth(), email.value, password.value)
         .then((data) => {
             console.log("Registration successful!");
