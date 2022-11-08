@@ -20,9 +20,10 @@ const register = () => {
 
     const auth = getAuth();
     
-    createUserWithEmailAndPassword(getAuth(), email.value, password.value)
+    createUserWithEmailAndPassword(auth, email.value, password.value)
         .then((data) => {
             console.log("Registration successful!");
+            console.log(auth.currentUser);
             router.push("/timetable"); // redirect them to timetable page
         })
         .catch((error) => {
