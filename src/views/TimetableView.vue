@@ -1,18 +1,28 @@
 <template>
-  <h1 class="dark:text-white">Timetable</h1>
+  <h1 class="dark:text-white">My Timetable</h1>
 
   <div class="container">
-    <TimetableRow></TimetableRow>
-    <TimetableRow></TimetableRow>
+    <Timetable></Timetable>
+
+    <br>
+
+    <hr>
+
+    <br>
+
+    <TimetableModuleCart></TimetableModuleCart>
     
   </div>
 </template>
 
 <script>
-  import TimetableRow from "@/components/TimetableRow.vue"
+  import Timetable from "@/components/Timetable.vue"
+  import TimetableModuleCart from "@/components/TimetableModuleCart.vue"
+
 
   export default {
     name: "TimetableView",
-    components: { TimetableRow }
+    components: { Timetable, TimetableModuleCart }
   }
+
 </script>
