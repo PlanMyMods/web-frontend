@@ -44,6 +44,7 @@ const register = () => {
 
                 default:
                     errorMsg.value = "Email or password is correct";
+                    break;
             }
             alert(error.message);
         });

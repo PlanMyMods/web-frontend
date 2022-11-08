@@ -1,9 +1,9 @@
 <template>
-    <h1>Create an Account</h1>
+    <h1 class="dark:text-white">Create an Account</h1>
     <p><input type="text" placeholder="Email" v-model="email" /></p>
     <p><input type="password" placeholder="Password" v-model="password" /></p>
-    <p><button @click="register">Submit</button></p>
-    <p><button @click="signInWithGoogle">Sign in with Google</button></p>
+    <p><button @click="register" class="dark:text-white">Submit</button></p>
+    <p><button @click="signInWithGoogle" class="dark:text-white">Sign in with Google</button></p>
 </template>
 
 
