@@ -1,6 +1,6 @@
 <template>
-
-    <h1 class="text-3xl font-extrabold dark:text-gray-300 py-5 text-gray-600 ">Pre-requisite Tree
+    <!-- not completed -->
+    <h1 class="text-3xl font-extrabold dark:text-gray-300 py-5 text-gray-600 mb-10">Pre-requisite Tree
     </h1>
     <div class="dark:bg-gray-800 flex justify-between text-center bg-gray-50 grid-cols-5 text-black dark:text-gray-300">
         <div class="col-span-1 z-10 sm:p-3 p-1.5 rounded-lg border-blue-300 border-2 my-auto">
@@ -21,6 +21,7 @@
             </button>
         </div>
         <hr class="my-auto col-span-1 w-full h-1 bg-gray-300 rounded border-0 dark:bg-gray-700">
+
         <!-- dependency mods (requires advanced querying to retrieve information to display)-->
         <!-- should also be an array of modules to loop through -->
         <div class="col-span-1 z-10 sm:p-3 p-1.5  rounded-lg border-blue-300 border-2 my-auto">
