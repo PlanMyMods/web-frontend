@@ -1,7 +1,6 @@
 <template>
   <h1 class="dark:text-white">My Timetable</h1>
 
-  <div class="container">
     <Timetable></Timetable>
 
     <br>
@@ -10,19 +9,26 @@
 
     <br>
 
-    <TimetableModuleCart></TimetableModuleCart>
+    <div class="hidden lg:block">
+      <TimetableModuleCart></TimetableModuleCart>
+    </div>
+    <div class="lg:hidden">
+        <TimetableModuleCartMobile></TimetableModuleCartMobile>
+
+    </div>
     
-  </div>
+
 </template>
 
 <script>
   import Timetable from "@/components/Timetable.vue"
   import TimetableModuleCart from "@/components/TimetableModuleCart.vue"
+  import TimetableModuleCartMobile from "@/components/TimetableModuleCartMobile.vue"
 
 
   export default {
     name: "TimetableView",
-    components: { Timetable, TimetableModuleCart }
+    components: { Timetable, TimetableModuleCart, TimetableModuleCartMobile }
   }
 
 </script>
