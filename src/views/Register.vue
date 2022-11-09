@@ -13,7 +13,7 @@ import {
     getAuth, 
     createUserWithEmailAndPassword,
     GoogleAuthProvider,
-    signInWithPopUp
+    signInWithPopup
     } from "firebase/auth";
 
 import router from "@/router/index.js";
@@ -40,7 +40,7 @@ const register = () => {
 
 const signInWithGoogle = () =>{
     const provider = new GoogleAuthProvider();
-    signInWithPopUp(getAuth(), provider)
+    signInWithPopup(getAuth(), provider)
     .then((result) => {
         console.log(result.user);
         router.push("/timetable");
