@@ -64,7 +64,7 @@ export async function returnNameArray() {
   const querySnapshot = await getDocs(q);
   let namelist = [];
   querySnapshot.forEach((doc) => {
-    namelist.push(doc.id);
+    namelist.push(doc.data().name);
   });
   if (namelist.length > 0) {
     console.log(namelist);
@@ -73,6 +73,30 @@ export async function returnNameArray() {
     console.log("No data or query error");
   }
 }
+
+////get a list of modules like: ['Web Application Development 2', 'Introduction to Programming', ...]
+export async function returnCodeNameObject() {
+  const modules = collection(db, "Modules");
+  const q = query(modules, where("name", "!=", ""));
+
+  const querySnapshot = await getDocs(q);
+  let namelist = [];
+  querySnapshot.forEach((doc) => {
+    var tempObj = {};
+    tempObj.code = doc.id
+    tempObj.name= doc.id.toLowerCase() + doc.data().name.toLowerCase();
+    namelist.push(tempObj)
+    //namelist[doc.id] = doc.id + doc.data().name;
+  });
+  //if (Object.keys(namelist).length > 0) {
+  if (namelist.length > 0) {
+    console.log(namelist);
+    return namelist;
+  } else {
+    console.log("No data or query error");
+  }
+}
+
 
 //return every single module into an array of object
 // 0: {prerequisites:{...}, ...}
