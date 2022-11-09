@@ -9,7 +9,13 @@
 
 <script setup>
 import { ref } from "vue";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { 
+    getAuth, 
+    createUserWithEmailAndPassword,
+    GoogleAuthProvider,
+    signInWithPopUp
+    } from "firebase/auth";
+
 import router from "@/router/index.js";
 
 const email = ref("");
@@ -30,6 +36,18 @@ const register = () => {
             console.log(error.code);
             alert(error.message);
         });
+};
+
+const signInWithGoogle = () =>{
+    const provider = new GoogleAuthProvider();
+    signInWithPopUp(getAuth(), provider)
+    .then((result) => {
+        console.log(result.user);
+        router.push("/timetable");
+    })
+    .catch((error) => {
+
+    });
 };
 
 
