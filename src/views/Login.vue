@@ -1,5 +1,5 @@
 <template>
-    <h1>Sign In to Account</h1>
+    <h1 class="dark:text-white">Sign In to Account</h1>
     <p><input type="text" placeholder="Email" v-model="email" /></p>
     <p><input type="password" placeholder="Password" v-model="password" /></p>
     <p v-if="errorMsg">{{ errorMsg }}</p>
@@ -12,8 +12,10 @@
 import { ref } from "vue";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
+
 const email = ref("");
 const password = ref("");
+const router = useRouter();
 const errorMsg = ref(); 
 
 
@@ -45,6 +47,7 @@ const register = () => {
                 default:
                     errorMsg.value = "Email or password is correct";
                     break;
+
             }
             alert(error.message);
         });
