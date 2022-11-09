@@ -9,14 +9,7 @@
 
 <script setup>
 import { ref } from "vue";
-import { 
-    getAuth, 
-    createUserWithEmailAndPassword,
-    GoogleAuthProvider,
-    signInWithPopup
-    } from "firebase/auth";
-
-import { useRouter } from "vue-router";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const email = ref("");
 const password = ref("");
