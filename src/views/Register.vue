@@ -13,7 +13,6 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const email = ref("");
 const password = ref("");
-const router = useRouter();
 
 
 const register = () => {
