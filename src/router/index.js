@@ -10,6 +10,7 @@ const routes = [
   { path: "/modules", name: "Modules", component: ModuleListView },
   { path: "/settings", name: "Settings", component: Settings },
   { path: "/register", name: "Register", component: Register },
+  { path: "/login", name: "Login", component: Login },
 ];
 
 const router = createRouter({

@@ -10,6 +10,7 @@
 <script setup>
 import { ref } from "vue";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import router from "@/router/index.js";
 
 const email = ref("");
 const password = ref("");

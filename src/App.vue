@@ -18,6 +18,8 @@
 <script>
 import Sidebar from "@/components/Sidebar.vue";
 import Navbar from "@/components/Navbar.vue";
+
+
 export default {
   name: "App",
 
@@ -26,6 +28,34 @@ export default {
     Navbar,
   },
 };
+
+// check if user is logged in
+const isLoggedIn = ref(false);
+
+let auth;
+
+// To set the user state (logged in vs not logged in)
+onMounted(() => {
+  auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user){
+      isLoggedIn.value = true;
+    } else {
+      isLoggedIn.value = false;
+    }
+  });
+});
+
+// How sign out would work for BeforeClass
+const handleSignOut = () => {
+  signOut(auth).then(() => {
+    router.push("/timetable");
+  }
+  ) 
+}
+
+
+
 </script>
 
 <style scoped></style>
