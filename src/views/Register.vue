@@ -16,10 +16,11 @@ import {
     signInWithPopup
     } from "firebase/auth";
 
-import router from "@/router/index.js";
+import { useRouter } from "vue-router";
 
 const email = ref("");
 const password = ref("");
+const router = useRouter();
 
 
 const register = () => {
@@ -46,6 +47,8 @@ const signInWithGoogle = () =>{
         router.push("/timetable");
     })
     .catch((error) => {
+        console.log(error.code);
+        alert(error.message);
 
     });
 };

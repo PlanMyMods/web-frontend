@@ -30,6 +30,11 @@
           <SidebarListItem linkName="Register" linkRoute="/register" linkImagePath="/assets/register.svg"
             :showSideBar="showSideBar" />
         </li>
+
+        <li>
+          <SidebarListItem linkName="Login" linkRoute="/login" linkImagePath="/assets/register.svg"
+            :showSideBar="showSideBar" />
+        </li>
       </ul>
     </div>
   </div>
