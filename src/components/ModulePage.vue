@@ -3,7 +3,7 @@
         class="dark:bg-gray-800 px-6 py-6 md:px-8 md:py-8 lg:px-16 lg:py-9 rounded-2xl flex flex-col  justify-between space-y-10 lg:space-x-10 max-w-screen-2xl bg-gray-50   text-black dark:text-gray-300">
         <div>
             <!-- first row -->
-            <div class="mx-auto my-10">
+            <div class="mx-auto mb-10">
                 <h1 class="text-3xl font-extrabold dark:text-blue-300 py-5 text-blue-600">{{ moduleData.code }} {{
                         moduleData.name
                 }}
@@ -48,11 +48,14 @@ import DoughnutChart from './DoughnutChart.vue';
 
 export default {
     async created() {
-        this.moduleData = await getFullCoursebyCode(this.$route.params.id)
-        this.moduleTerms = await getModuleTerms(this.$route.params.id)
+
+        this.moduleData = await getFullCoursebyCode('CS203')
+        this.moduleTerms = await getModuleTerms('CS203')
+        // this.moduleData = await getFullCoursebyCode(this.$route.params.id)
+        // this.moduleTerms = await getModuleTerms(this.$route.params.id)
         console.log('moduleData:', this.moduleData)
         console.log('moduleTerms:', this.moduleTerms[0].assessment)
-        console.log(this.$route.params.id)
+        // console.log(this.$route.params.id)
     },
 
     methods: {

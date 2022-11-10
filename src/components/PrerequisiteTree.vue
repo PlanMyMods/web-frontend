@@ -53,7 +53,7 @@ export default {
         },
 
         prerequisites: {
-            type: String,
+            type: Array,
             default: 'None',
         },
         corequisites: {
