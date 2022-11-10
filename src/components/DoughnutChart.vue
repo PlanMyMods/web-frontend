@@ -29,13 +29,12 @@ export default {
                     label: '# of Votes',
                     data: this.weightage,
                     backgroundColor: [
-                        '#FFEBAD',
-                        '#B1B2FF',
-                        '#AAC4FF',
-                        '#D2DAFF',
-                        '#EEF1FF',
+                        '#189AB4',
+                        '#5885AF',
+                        '#5fa5f9',
+                        '#4b6bfb',
+                        '#1c4ed8',
                     ],
-
                     borderWidth: 1
                 }]
             },
