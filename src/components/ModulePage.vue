@@ -55,10 +55,10 @@ import Timetable from './Timetable.vue'
 export default {
     async created() {
 
-        this.moduleData = await getFullCoursebyCode('CS203')
-        this.moduleTerms = await getModuleTerms('IS215')
-        // this.moduleData = await getFullCoursebyCode(this.$route.params.id)
-        // this.moduleTerms = await getModuleTerms(this.$route.params.id)
+        // this.moduleData = await getFullCoursebyCode('CS203')
+        // this.moduleTerms = await getModuleTerms('IS215')
+        this.moduleData = await getFullCoursebyCode(this.$route.params.id)
+        this.moduleTerms = await getModuleTerms(this.$route.params.id)
         console.log('moduleData pre-req:', this.moduleData.prerequisites.string)
         console.log('moduleTerms:', this.moduleTerms[0].assessment)
         // console.log(this.$route.params.id)
