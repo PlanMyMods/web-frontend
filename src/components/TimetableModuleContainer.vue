@@ -1,5 +1,5 @@
 <template>
-  <div class="grid gap-4 grid-cols-1 md:grid-cols-2 md:ml-12 md:mr-10 mt-10">
+  <div class="grid gap-4 grid-cols-1 md:grid-cols-2  md:mr-10 mt-10">
     <div v-for="(mod, index) in modules" class="flex justify-start mb-3 gap-3">
       <div class="w-3 h-full bg-red-100"></div>
       <div class="w-[14.5rem] xl:min-w-[20rem]">
