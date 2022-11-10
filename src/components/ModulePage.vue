@@ -34,7 +34,6 @@
 
             <!-- timetable component -->
             <h1 class="text-3xl font-extrabold dark:text-gray-300 py-5 text-gray-600 ">Timetable</h1>
-            <h1 class="text-3xl font-extrabold dark:text-gray-300 py-5 text-gray-600 ">{{ assArr }}</h1>
             <div class="w-full overflow-x-auto mb-20">
                 <Timetable></Timetable>
             </div>

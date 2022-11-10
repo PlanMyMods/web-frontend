@@ -29,19 +29,14 @@ export default {
                     label: '# of Votes',
                     data: this.weightage,
                     backgroundColor: [
-                        '#EEF1FF',
-                        '#AAC4FF',
-                        '#B1B2FF',
-                        '#D2DAFF',
-
+                        '#FBE0C4',
+                        '#0061A8',
+                        '#2978B5',
+                        '#8AB6D6',
+                        '#325288',
                     ],
-                    // borderColor: [
-                    //     '#FFF7E9',
-                    //     '#FF731D',
-                    //     '#5F9DF7',
-                    //     '#1746A2',
-                    // ],
-                    borderWidth: 1.5
+
+                    borderWidth: 1
                 }]
             },
         });
