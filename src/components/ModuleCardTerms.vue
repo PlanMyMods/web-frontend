@@ -68,7 +68,7 @@
 
 <script>
 import { ref } from "vue";
-import { format } from "date-fns";
+import { formatUnixTime, getTimeDifference } from "@/utils/datetime";
 
 export default {
   name: "ModuleCardTerms",
@@ -82,14 +82,8 @@ export default {
     courseLink: String,
   },
   methods: {
-    formatUnixTime(time, formatString) {
-      return format(new Date(time * 1000), formatString);
-    },
-    getTimeDifference(start, end) {
-      const difference =
-        (new Date(end).getTime() - new Date(start).getTime()) / 3600;
-      return difference;
-    },
+    formatUnixTime,
+    getTimeDifference,
     updateSelectedTerm(term) {
       this.selectedIndex = this.terms
         .map((item) => item.term.split("/")[1])

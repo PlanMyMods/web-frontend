@@ -1,5 +1,5 @@
 <template>
-  <main class="w-screen flex flex-col fixed">
+  <main class="w-screen flex flex-col fixed text-black dark:text-gray-300">
     <Navbar class="" />
     <!-- <div class="flex h-[calc(100vh-4rem)]"> -->
     <div class="flex h-screen">
