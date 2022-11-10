@@ -20,7 +20,7 @@
                 </div>
                 <div class="  w-full lg:w-[50%] flex justify-center lg:justify-end items-center">
                     <div class="w-[300px]">
-                        <DoughnutChart :assessmentName='assessmentArr' :weightage="weightageArr" />
+                        <DoughnutChart :assessmentName='assArr[0]' :weightage="assArr[1]" />
                     </div>
                 </div>
             </div>
@@ -34,6 +34,7 @@
 
             <!-- timetable component -->
             <h1 class="text-3xl font-extrabold dark:text-gray-300 py-5 text-gray-600 ">Timetable</h1>
+            <h1 class="text-3xl font-extrabold dark:text-gray-300 py-5 text-gray-600 ">{{ assArr }}</h1>
             <div class="w-full overflow-x-auto mb-20">
                 <Timetable></Timetable>
             </div>
@@ -77,13 +78,26 @@ export default {
                 arr.push('None')
             }
             return arr
-        }
-    },
-    isOr() {
-        if (this.moduleData.prerequisites.string.includes('or')) {
-            return true
-        }
-        return false
+        },
+        isOr() {
+            if (this.moduleData.prerequisites.string.includes('or')) {
+                return true
+            }
+            return false
+        },
+        assArr() {
+            let arr = []
+            let nameArr = []
+            let weightageArr = []
+            this.moduleTerms[0].assessment.map((e) => {
+                console.log('terms', e)
+                nameArr.push(e.name)
+                weightageArr.push(e.weightage)
+            })
+            arr.push(nameArr, weightageArr)
+            console.log('assArr:', arr)
+            return arr
+        },
     },
     data() {
         return {
@@ -91,8 +105,8 @@ export default {
             moduleTerms: [],
 
             //TODO: this needs to be dynamically updated for each module
-            assessmentArr: ['Class Participation', 'Exams', 'Project', 'Quizzes'],
-            weightageArr: [10, 35, 35, 20],
+            // assessmentArr: ['Class Participation', 'Exams', 'Project', 'Quizzes'],
+            // weightageArr: [10, 35, 35, 20],
         }
     },
     components: {
