@@ -4,9 +4,7 @@
       class="bg-gray-50 dark:bg-gray-800 p-5 h-screen min-w-[12rem] w-[12rem] hidden md:block"
       :class="{ 'w-20 min-w-[5rem]': showSideBar }"
     >
-      <div
-        class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 text-center"
-      >
+      <div class="p-2 pb-4 rounded-lg text-center">
         <button
           class="self-center text-2xl tracking-tight font-semibold whitespace-nowrap text-blue-600 dark:text-blue-400"
         >

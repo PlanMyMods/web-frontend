@@ -21,12 +21,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.bg-gradient-row-50 {
-  background-image: linear-gradient(90deg, #e0e0e0 50%, #f5f5f5 50%);
-}
-
-.bg-gradient-row-50-dark {
-  background-image: linear-gradient(90deg, #334155 50%, #1f2937 50%);
-}
-</style>
+<style scoped></style>
