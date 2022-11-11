@@ -25,6 +25,11 @@
           <SidebarListItem linkName="Settings" linkRoute="/settings" linkImagePath="/assets/settings.svg"
             :showSideBar="showSideBar" />
         </li>
+
+        <hr class="border-gray-300 dark:border-gray-700" />
+
+        <ThemeToggle></ThemeToggle>
+
       </ul>
     </div>
   </div>
@@ -36,6 +41,7 @@ import { ref } from "vue";
 import Button from "./Button.vue";
 import SidebarListItem from "./SidebarListItem.vue";
 import SearchBar from "./Searchbar.vue";
+import ThemeToggle from "./ThemeToggle.vue";
 
 export default {
   setup() {
@@ -47,6 +53,7 @@ export default {
     Button: Button,
     SidebarListItem,
     Searchbar: SearchBar,
+    ThemeToggle
   },
 };
 </script>
