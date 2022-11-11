@@ -8,7 +8,7 @@
       {{ day }}
     </div>
     <div
-      class="relative flex flex-auto flex-col min-h-[3.6rem] p-1 bg-[length:14.285%_14.285%] day-row"
+      class="relative flex flex-auto flex-col min-h-[3.6rem] p-1 bg-[length:13.34%_14.285%] bg-gradient-row-50 dark:bg-gradient-row-50-dark"
     ></div>
   </li>
 </template>
@@ -22,13 +22,11 @@ export default {
 </script>
 
 <style scoped>
-.day-row {
+.bg-gradient-row-50 {
   background-image: linear-gradient(90deg, #e0e0e0 50%, #f5f5f5 50%);
 }
 
-@media (prefers-color-scheme: dark) {
-  .day-row {
-    background-image: linear-gradient(90deg, #111827 50%, #1f2937 50%);
-  }
+.bg-gradient-row-50-dark {
+  background-image: linear-gradient(90deg, #334155 50%, #1f2937 50%);
 }
 </style>

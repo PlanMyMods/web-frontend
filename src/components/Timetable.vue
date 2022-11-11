@@ -3,6 +3,7 @@
     <div class="w-full min-w-[55rem] text-sm font-semibold">
       <div class="flex justify-between ml-14">
         <div v-for="hour in hours" class="translate-x-[-50%]">{{ hour }}</div>
+        <span></span>
       </div>
       <div
         class="m-0 border rounded border-solid border-gray-400 dark:border-gray-600"

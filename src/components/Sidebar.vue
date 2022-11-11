@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="bg-gray-50 dark:bg-gray-800 p-5 h-screen min-w-[12rem] duration-300 w-[12rem] hidden md:block"
+      class="bg-gray-50 dark:bg-gray-800 p-5 h-screen min-w-[12rem] w-[12rem] hidden md:block"
       :class="{ 'w-20 min-w-[5rem]': showSideBar }"
     >
       <div
