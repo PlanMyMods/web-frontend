@@ -56,12 +56,7 @@
       <div>{{ terms[selectedIndex].recommended.hours.total }} hrs</div>
     </div>
     <div>
-      <a
-        class="dark:text-blue-300 text-blue-600"
-        :href="courseLink"
-        target="_blank"
-        >Course Outline</a
-      >
+      <TextUrl text="Course Outline" :link="courseLink" />
     </div>
   </div>
 </template>
@@ -69,6 +64,7 @@
 <script>
 import { ref } from "vue";
 import { formatUnixTime, getTimeDifference } from "@/utils/datetime";
+import TextUrl from "./TextUrl.vue";
 
 export default {
   name: "ModuleCardTerms",
@@ -110,5 +106,6 @@ export default {
       return assessments;
     },
   },
+  components: { TextUrl },
 };
 </script>

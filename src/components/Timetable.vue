@@ -1,22 +1,22 @@
 <template>
-  <div class="min-w-[55rem] text-sm font-semibold">
-    <div class="flex justify-between ml-14">
-      <div v-for="hour in hours">{{ hour }}</div>
+  <div class="flex-[0_0_100%] overflow-auto overscroll-x-none">
+    <div class="w-full min-w-[55rem] text-sm font-semibold">
+      <div class="flex justify-between ml-14">
+        <div v-for="hour in hours" class="translate-x-[-50%]">{{ hour }}</div>
+      </div>
+      <div
+        class="m-0 border rounded border-solid border-gray-400 dark:border-gray-600"
+      >
+        <ol>
+          <TimetableRow v-for="day in days" :key="day" :day="day" />
+        </ol>
+      </div>
     </div>
-    <div
-      class="m-0 border rounded border-solid border-gray-400 dark:border-gray-600"
-    >
-      <ol>
-        <TimetableRow v-for="day in days" :key="day" :day="day" />
-      </ol>
-    </div>
-    <TimetableModule />
   </div>
 </template>
 
 <script>
 import TimetableRow from "./TimetableRow.vue";
-import TimetableModule from "./TimetableModule.vue";
 
 export default {
   name: "Timetable",

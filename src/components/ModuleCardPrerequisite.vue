@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { getCourseLink } from "@/utils/firebasemethod";
+import { getCourseLink } from "@/utils/firebase";
 
 export default {
   name: "ModuleCardPreqrequisite",

@@ -1,10 +1,12 @@
 <template>
   <main class="w-screen flex flex-col fixed text-black dark:text-gray-300">
-    <Navbar class="" />
+    <Navbar class="md:hidden" />
     <!-- <div class="flex h-[calc(100vh-4rem)]"> -->
-    <div class="flex h-screen">
+    <div class="flex">
       <Sidebar />
-      <div class="flex-auto dark:bg-gray-900 bg-grey-2 overflow-y-scroll">
+      <div
+        class="flex-auto w-full md:w-[calc(100vh-12rem)] h-[calc(100vh-4rem)] md:h-screen dark:bg-gray-900 bg-gray-200 overflow-y-scroll"
+      >
         <div
           class="items-center mx-auto max-w-screen-2xl p-8 lg:p-10 space-y-5"
         >

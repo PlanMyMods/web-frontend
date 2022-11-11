@@ -1,8 +1,11 @@
 <template>
-  <div class="flex flex-wrap">
-    <Timetable />
-
-    <TimetableModuleContainer />
+  <div
+    class="bg-gray-50 dark:bg-gray-800 px-6 py-6 md:px-8 md:py-8 lg:px-16 lg:py-9 rounded-2xl h-full"
+  >
+    <div class="flex flex-wrap">
+      <Timetable />
+      <TimetableModuleContainer />
+    </div>
   </div>
 </template>
 

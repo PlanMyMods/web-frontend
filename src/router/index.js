@@ -2,12 +2,30 @@ import { createRouter, createWebHistory } from "vue-router";
 import Timetable from "@/views/TimetableView.vue";
 import Settings from "@/views/SettingsView.vue";
 import ModuleListView from "@/views/ModuleListView.vue";
+import RegisterView from "@/views/RegisterView.vue";
 
 const routes = [
-  { path: "/", redirect: { name: "Timetable" } },
-  { path: "/timetable", name: "Timetable", component: Timetable },
-  { path: "/modules", name: "Modules", component: ModuleListView },
-  { path: "/settings", name: "Settings", component: Settings },
+  { path: "/", redirect: { name: "Register" } },
+  {
+    path: "/timetable",
+    name: "Timetable",
+    component: Timetable,
+  },
+  {
+    path: "/modules",
+    name: "Modules",
+    component: ModuleListView,
+  },
+  {
+    path: "/settings",
+    name: "Settings",
+    component: Settings,
+  },
+  {
+    path: "/register",
+    name: "Register",
+    component: RegisterView,
+  },
 ];
 
 const router = createRouter({
