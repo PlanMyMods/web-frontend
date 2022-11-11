@@ -34,6 +34,9 @@
           <li>
             <NavbarButtons linkRoute="/settings" linkName="Settings" />
           </li>
+
+            <!-- <ThemeToggle></ThemeToggle> -->
+
         </ul>
       </div>
       <!-- searchbar -->
@@ -49,6 +52,7 @@ import { ref } from "vue";
 import Button from "./Button.vue";
 import NavbarButtons from "./NavbarButtons.vue";
 import Searchbar from "./Searchbar.vue";
+// import ThemeToggle from "./ThemeToggle.vue";
 
 export default {
   setup() {
@@ -59,7 +63,8 @@ export default {
   components: {
     Button: Button,
     NavbarButtons,
-    Searchbar
+    Searchbar,
+    // ThemeToggle
   },
 };
 </script>
