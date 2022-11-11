@@ -1,70 +1,34 @@
 <template>
-    <div class="grid grid-cols-7 lg:grid-cols-4">
-      <div>
-        <div class="grid grid-cols-4">
-
-          <div class="px-4 py-2 border-gray-600">
-            <div class="text-white p-0.5">{{day}}</div>
-          </div>
-          <div class="px-4 py-2 border-2 border-gray-600" id="{{day}}8"></div>
-          <div class="px-4 py-2 border-2 border-gray-600" id="{{day}}9"></div>
-          <div class="px-4 py-2 border-2 border-gray-600" id="{{day}}10"></div>
-
-        </div>
-      </div>
-
-      <div>
-        <div class="grid grid-cols-4">
-
-          <div class="px-4 py-5 border-2 border-gray-600" id="{{day}}11"></div>
-          <div class="px-4 py-5 border-2 border-gray-600" id="{{day}}12"></div>
-          <div class="px-4 py-5 border-2 border-gray-600" id="{{day}}13"></div>
-          <div class="px-4 py-5 border-2 border-gray-600" id="{{day}}14"></div>
-
-        </div>
-      </div>
-
-      <div>
-        <div class="grid grid-cols-4">
-
-          <div class="px-4 py-5 border-2 border-gray-600" id="{{day}}15"></div>
-          <div class="px-4 py-5 border-2 border-gray-600" id="{{day}}16"></div>
-          <div class="px-4 py-5 border-2 border-gray-600" id="{{day}}17"></div>
-          <div class="px-4 py-5 border-2 border-gray-600" id="{{day}}18"></div>
-
-        </div>
-      </div>
-
-      <div>
-        <div class="grid grid-cols-4">
-
-          <div class="px-4 py-5 border-2 border-gray-600" id="{{day}}19"></div>
-          <div class="px-4 py-5 border-2 border-gray-600" id="{{day}}20"></div>
-          <div class="px-4 py-5 border-2 border-gray-600" id="{{day}}21"></div>
-          <div class="px-4 py-5 border-2 border-gray-600" id="{{day}}22"></div>
-
-        </div>
-      </div>
-
-
+  <li
+    class="relative flex flex-initial min-h-[3.6rem] border-b border-solid border-gray-400 dark:border-gray-600"
+  >
+    <div
+      class="sticky z-50 flex flex-[0_0_3.5rem] left-0 justify-center items-center border-r border-solid border-gray-400 dark:border-gray-600 bg-gray-200 dark:bg-gray-800 uppercase"
+    >
+      {{ day }}
     </div>
-<!-- 
-    <div class="md:grid grid-cols-7">
-      <div class="px-4 py-5 border-2 border-gray-600"></div>
-      <div class="px-4 py-5 border-2 border-gray-600"></div>
-      <div class="px-4 py-5 border-2 border-gray-600"></div>
-      <div class="px-4 py-5 border-2 border-gray-600"></div>
-      <div class="px-4 py-5 border-2 border-gray-600"></div>
-      <div class="px-4 py-5 border-2 border-gray-600"></div>
-      <div class="px-4 py-5 border-2 border-gray-600"></div>
-    </div> -->
+    <div
+      class="relative flex flex-auto flex-col min-h-[3.6rem] p-1 bg-[length:14.285%_14.285%] day-row"
+    ></div>
+  </li>
 </template>
 
 <script>
 export default {
   props: {
     day: String,
-  }
+  },
 };
-
 </script>
+
+<style scoped>
+.day-row {
+  background-image: linear-gradient(90deg, #e0e0e0 50%, #f5f5f5 50%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .day-row {
+    background-image: linear-gradient(90deg, #111827 50%, #1f2937 50%);
+  }
+}
+</style>

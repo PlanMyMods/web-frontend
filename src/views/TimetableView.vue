@@ -1,34 +1,17 @@
 <template>
-  <h1 class="dark:text-white">My Timetable</h1>
+  <div class="flex flex-wrap">
+    <Timetable />
 
-    <Timetable></Timetable>
-
-    <br>
-
-    <hr>
-
-    <br>
-
-    <div class="hidden lg:block">
-      <TimetableModuleCart></TimetableModuleCart>
-    </div>
-    <div class="lg:hidden">
-        <TimetableModuleCartMobile></TimetableModuleCartMobile>
-
-    </div>
-    
-
+    <TimetableModuleContainer />
+  </div>
 </template>
 
 <script>
-  import Timetable from "@/components/Timetable.vue"
-  import TimetableModuleCart from "@/components/TimetableModuleCart.vue"
-  import TimetableModuleCartMobile from "@/components/TimetableModuleCartMobile.vue"
+import Timetable from "@/components/Timetable.vue";
+import TimetableModuleContainer from "@/components/TimetableModuleContainer.vue";
 
-
-  export default {
-    name: "TimetableView",
-    components: { Timetable, TimetableModuleCart, TimetableModuleCartMobile }
-  }
-
+export default {
+  name: "TimetableView",
+  components: { Timetable, TimetableModuleContainer },
+};
 </script>
