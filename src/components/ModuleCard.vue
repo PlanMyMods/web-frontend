@@ -1,8 +1,8 @@
 <template>
   <div
-    class="bg-gray-50 dark:bg-gray-800 px-3 py-6 sm:px-6 md:p-8 lg:px-16 lg:py-9 rounded-2xl flex flex-col xl:flex-row justify-between space-y-10 lg:space-x-10 max-w-screen-2xl lg:grid lg:grid-cols-4 xl:grid-cols-5"
+    class="bg-gray-50 dark:bg-gray-800 px-3 py-6 sm:px-6 md:p-8 lg:px-16 lg:py-9 rounded-2xl flex flex-col xl:flex-row justify-between space-y-10 lg:space-x-10 max-w-screen-2xl lg:flex-row"
   >
-    <section class="lg:col-span-2 xl:col-span-3">
+    <section>
       <TextUrl
         :text="`${mod.code} ${mod.name}`"
         :link="linkRoute"
@@ -27,7 +27,7 @@
       />
     </section>
 
-    <section class="text-xs lg:text-sm lg:col-span-2 w-full">
+    <section class="text-xs lg:text-sm w-full">
       <ModuleCardTerms
         v-if="validTerm(mod.terms)"
         :terms="mod.terms"

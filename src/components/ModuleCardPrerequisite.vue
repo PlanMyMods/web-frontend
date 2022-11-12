@@ -35,7 +35,7 @@ export default {
   methods: {
     async getTransformedString(target) {
       if (!target || !target.string || !target.ref) {
-        return "<div class='dark:text-gray-500 text-gray-700'>None</div>";
+        return "<div class='dark:text-gray-500 text-gray-400'>None</div>";
       }
       const prereq = target.string;
       let transformedString = "";
