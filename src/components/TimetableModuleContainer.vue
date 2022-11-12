@@ -34,6 +34,8 @@ export default {
   data() {
     return {
       modules: [
+
+      // need to replace these with the data from firebasemethod.js, currently these are hardcoded in
         {
           title: "IS110 Information Systems and Innovation",
           exam: {

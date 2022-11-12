@@ -13,11 +13,16 @@
         </ol>
       </div>
     </div>
+    
+    <TimetableModule />
+    <SelectModule/>
   </div>
 </template>
 
 <script>
 import TimetableRow from "./TimetableRow.vue";
+import TimetableModule from "./TimetableModule.vue";
+import SelectModule from "./SelectModule.vue";
 
 export default {
   name: "Timetable",
@@ -43,6 +48,6 @@ export default {
       ],
     };
   },
-  components: { TimetableRow },
+  components: { TimetableRow, SelectModule, TimetableModule },
 };
 </script>
