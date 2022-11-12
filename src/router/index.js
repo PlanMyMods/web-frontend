@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Timetable from "@/views/TimetableView.vue";
 import Settings from "@/views/SettingsView.vue";
 import ModuleListView from "@/views/ModuleListView.vue";
+import ModulePageView from "@/views/ModulePageView.vue";
 
 const routes = [
   { path: "/", redirect: { name: "Timetable" } },
