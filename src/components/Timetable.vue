@@ -16,6 +16,7 @@
     
     <TimetableModule />
     <SelectModule/>
+    <buttonAddModule/>
   </div>
 </template>
 
@@ -23,6 +24,7 @@
 import TimetableRow from "./TimetableRow.vue";
 import TimetableModule from "./TimetableModule.vue";
 import SelectModule from "./SelectModule.vue";
+import buttonAddModule from "./buttonAddModule.vue";
 
 export default {
   name: "Timetable",
