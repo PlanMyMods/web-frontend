@@ -18,7 +18,7 @@
   <div class="mt-5 space-y-3 dark:text-gray-300">
     <div v-if="hasProperty(terms[selectedIndex].exam)">
       <div class="font-bold mb-2">Exams:</div>
-      <div>
+      <div class="">
         {{ formatUnixTime(terms[selectedIndex].exam.start, "dd-MMM-yyyy") }} •
         {{
           getTimeDifference(
@@ -53,7 +53,7 @@
     </div>
     <div v-if="hasProperty(terms[selectedIndex].recommended)">
       <div class="font-bold mb-2">Estimated Weekly Hours:</div>
-      <div>{{ terms[selectedIndex].recommended.hours.total }} hrs</div>
+      <div class="">{{ terms[selectedIndex].recommended.hours.total }} hrs</div>
     </div>
     <div>
       <TextUrl text="Course Outline" :link="courseLink" />

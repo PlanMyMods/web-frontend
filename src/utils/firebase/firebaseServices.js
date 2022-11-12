@@ -72,7 +72,7 @@ export async function returnModuleObject() {
   }
 
   if (modulelist.length > 0) {
-    console.log(modulelist);
+    console.log("modulelist:", modulelist);
     return modulelist;
   } else {
     console.log("No data or query error");

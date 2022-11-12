@@ -20,6 +20,11 @@ const routes = [
     name: "Settings",
     component: Settings,
   },
+  {
+    path: "/modules/:id",
+    name: "Module Page",
+    component: ModulePageView,
+  },
 ];
 
 const router = createRouter({
