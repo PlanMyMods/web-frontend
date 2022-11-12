@@ -1,7 +1,3 @@
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
-
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -15,10 +11,4 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
-// Initialize firebase
-const firebaseApp = initializeApp(firebaseConfig);
-
-// Initialize auth && firestore with the 'firebaseApp' property
-export const auth = getAuth(firebaseApp);
-export const db = getFirestore(firebaseApp);
-export default firebaseApp;
+export default firebaseConfig;
