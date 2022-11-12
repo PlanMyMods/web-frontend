@@ -102,8 +102,11 @@ export async function getFullCoursebyCode(code) {
   const docRef = doc(db, "Modules", code);
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
-    console.log("Document data:", docSnap.data());
-    return docSnap.data();
+    let moduleData = docSnap.data();
+    console.log("Document data:", moduleData);
+    const terms = await getModuleTerms(code);
+    moduleData.terms = terms;
+    return moduleData;
   } else {
     // doc.data() will be undefined in this case
     console.log("No such document!");
