@@ -13,6 +13,19 @@
 
 <script>
 
+// gets the collection of Modules + all details
+import { returnModuleObject } from "@/utils/firebase";
+
+    export default {
+
+        name: "buttonAddModule",
+
+        async created(){
+            this.moduleDetails = await returnModuleObject();
+        },
+
+
+    };
 
 
 

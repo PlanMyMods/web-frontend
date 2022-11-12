@@ -5,6 +5,9 @@
     <div class="flex flex-wrap">
       <Timetable />
       <TimetableModuleContainer />
+      <SelectModule/>
+      <buttonAddModule/>
+
     </div>
   </div>
 </template>
@@ -12,9 +15,11 @@
 <script>
 import Timetable from "@/components/Timetable.vue";
 import TimetableModuleContainer from "@/components/TimetableModuleContainer.vue";
+import SelectModule from "@/components/SelectModule.vue";
+import buttonAddModule from "@/components/buttonAddModule.vue";
 
 export default {
   name: "TimetableView",
-  components: { Timetable, TimetableModuleContainer },
+  components: { Timetable, TimetableModuleContainer, SelectModule, buttonAddModule  },
 };
 </script>
