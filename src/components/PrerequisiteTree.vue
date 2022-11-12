@@ -3,8 +3,7 @@
     <h1 class="text-3xl font-extrabold dark:text-gray-300 py-5 text-gray-600 mb-10">Pre-requisite Tree
     </h1>
     <div class="w-full overflow-x-auto">
-        <div
-            class="dark:bg-gray-900 flex justify-between text-center bg-gray-50 grid-cols-5 text-black dark:text-gray-300  ">
+        <div class="dark:bg-gray-900 flex justify-between text-center grid-cols-5 text-black dark:text-gray-300  ">
             <div class="col-span-1 z-10 sm:p-3 p-1.5 rounded-lg border-blue-300 border-2 my-auto ">
                 <h5 class="text-sm font-bold dark:text-white pb-2 px-2">Prerequisites</h5>
                 <!-- displaying mods -->
