@@ -18,7 +18,7 @@
   <div class="mt-5 space-y-3 dark:text-gray-300">
     <div v-if="hasProperty(terms[selectedIndex].exam)">
       <div class="font-bold mb-2">Exams:</div>
-      <div class="">
+      <div v-if="terms[selectedIndex].exam.start !== ''">
         {{ formatUnixTime(terms[selectedIndex].exam.start, "dd-MMM-yyyy") }} •
         {{
           getTimeDifference(
@@ -28,6 +28,7 @@
         }}
         hrs
       </div>
+      <div v-else>No exam</div>
     </div>
     <div v-if="hasProperty(terms[selectedIndex].assessment)">
       <div class="font-bold mb-2">Course Assessment:</div>
@@ -36,17 +37,17 @@
         :key="index"
         class="flex items-center space-x-2"
       >
-        <div class="w-32">{{ assessment.name }}</div>
-        <div class="w-8">{{ assessment.weightage * 100 }}%</div>
+        <div class="w-[9rem] sm:w-40">{{ assessment.name }}</div>
+        <div class="w-8">{{ (assessment.weightage * 100).toFixed(0) }}%</div>
         <div class="hidden xs:flex space-x-0.5">
           <div
             v-for="(_, index) in Array(Math.floor(assessment.weightage * 10))"
             :key="index"
-            class="h-2.5 w-6 rounded-sm dark:bg-blue-100 bg-blue-400"
+            class="h-2.5 w-4 xl:w-6 rounded-sm dark:bg-blue-100 bg-blue-400"
           ></div>
           <div
             v-if="(assessment.weightage * 100) % 10 !== 0"
-            class="h-2.5 w-3 rounded-l-sm dark:bg-blue-100 bg-blue-400"
+            class="h-2.5 w-2 xl:w-3 rounded-l-sm dark:bg-blue-100 bg-blue-400"
           ></div>
         </div>
       </div>

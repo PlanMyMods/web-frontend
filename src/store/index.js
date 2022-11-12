@@ -1,4 +1,9 @@
-import { emailRegister, emailSignIn, signOutUser } from "@/utils/firebase";
+import {
+  emailRegister,
+  emailSignIn,
+  signOutUser,
+  updateUserProfile,
+} from "@/utils/firebase";
 import { createStore } from "vuex";
 
 const store = createStore({
@@ -26,7 +31,7 @@ const store = createStore({
       const response = await emailRegister(email, password);
       if (response) {
         context.commit("setUser", response.user);
-        response.user.updateProfile({ displayName: name });
+        updateUserProfile({ displayName: name });
       } else {
         throw new Error("Unable to register user");
       }
@@ -34,6 +39,7 @@ const store = createStore({
 
     async logIn(context, { email, password }) {
       const response = await emailSignIn(email, password);
+      console.log(response);
       if (response) {
         context.commit("setUser", response.user);
       } else {
