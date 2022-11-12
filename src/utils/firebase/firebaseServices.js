@@ -10,6 +10,23 @@ import {
 
 //------------------------------------Module Collection-------------------------------------------
 
+const schema = {
+  name: (value) => /^([A-Z][a-z\-]* )+[A-Z][a-z\-]*( \w+\.?)?$/.test(value),
+  age: (value) => parseInt(value) === Number(value) && value >= 18,
+  phone: (value) => /^(\+?\d{1,2}-)?\d{3}-\d{3}-\d{4}$/.test(value),
+};
+
+/**
+ * Validates a given object against a schema.
+ * @param {Object} object
+ * @param {Object} schema
+ * @returns {Array} Array of errors for each field missing or invalid from the schema.
+ */
+const validate = (object, schema) =>
+  Object.keys(schema)
+    .filter((key) => !schema[key](object[key]))
+    .map((key) => new Error(`${key} is invalid.`));
+
 export async function getModuleTerms(moduleCode) {
   const sectionColRef = collection(db, "Modules", moduleCode, "Sections");
   const querySnapshot = await getDocs(sectionColRef);

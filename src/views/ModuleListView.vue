@@ -1,6 +1,12 @@
 <template>
-  <ModuleCard v-for="mod in moduleList" :key="mod.code" :validTerms="validTerms" :mod="mod" :terms="mod.terms"
-    :linkRoute="'modules/' + mod.code" />
+  <ModuleCard
+    v-for="mod in moduleList"
+    :key="mod.code"
+    :validTerms="validTerms"
+    :mod="mod"
+    :terms="mod.terms"
+    :linkRoute="'module/' + mod.code"
+  />
 </template>
 
 <script>

@@ -1,15 +1,14 @@
 <template>
   <div
-    class="bg-gray-50 dark:bg-gray-800 px-6 py-6 md:px-8 md:py-8 lg:px-16 lg:py-9 rounded-2xl flex flex-col xl:flex-row justify-between space-y-10 lg:space-x-10 max-w-screen-2xl lg:grid lg:grid-cols-4 xl:grid-cols-5"
+    class="bg-gray-50 dark:bg-gray-800 px-3 py-6 sm:px-6 md:p-8 lg:px-16 lg:py-9 rounded-2xl flex flex-col xl:flex-row justify-between space-y-10 lg:space-x-10 max-w-screen-2xl lg:grid lg:grid-cols-4 xl:grid-cols-5"
   >
     <section class="lg:col-span-2 xl:col-span-3">
-      <router-link :to="linkRoute">
-        <div
-          class="text-lg md:text-lg lg:text-2xl dark:text-blue-300 text-blue-600 font-extrabold hover:text-blue-300 dark:hover:text-blue-600"
-        >
-          {{ `${mod.code} ${mod.name}` }}
-        </div>
-      </router-link>
+      <TextUrl
+        :text="`${mod.code} ${mod.name}`"
+        :link="linkRoute"
+        :router="true"
+        class="text-lg md:text-lg lg:text-2xl font-extrabold"
+      />
       <div class="flex space-x-2 mt-3">
         <Badge
           v-for="(badge, index) in mod.badges"
@@ -44,6 +43,7 @@ import Badge from "./Badge.vue";
 import ModuleCardTerms from "./ModuleCardTerms.vue";
 import ModuleCardDescription from "./ModuleCardDescription.vue";
 import ModuleCardPrerequisite from "./ModuleCardPrerequisite.vue";
+import TextUrl from "./TextUrl.vue";
 
 export default {
   name: "ModuleCard",
@@ -77,6 +77,7 @@ export default {
     ModuleCardTerms,
     ModuleCardDescription,
     ModuleCardPrerequisite,
+    TextUrl,
   },
 };
 </script>

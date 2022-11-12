@@ -3,6 +3,8 @@ import Timetable from "@/views/TimetableView.vue";
 import Settings from "@/views/SettingsView.vue";
 import ModuleListView from "@/views/ModuleListView.vue";
 import ModulePageView from "@/views/ModulePageView.vue";
+import RegisterView from "@/views/RegisterView.vue";
+import LoginView from "@/views/LoginView.vue";
 
 const routes = [
   { path: "/", redirect: { name: "Timetable" } },
@@ -22,9 +24,19 @@ const routes = [
     component: Settings,
   },
   {
-    path: "/modules/:id",
-    name: "Module Page",
+    path: "/module/:id",
+    name: "ModulePage",
     component: ModulePageView,
+  },
+  {
+    path: "/register",
+    name: "Register",
+    component: RegisterView,
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: LoginView,
   },
 ];
 
