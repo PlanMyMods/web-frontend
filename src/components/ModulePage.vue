@@ -1,6 +1,7 @@
 <template>
     <div
-        class="dark:bg-gray-800 px-6 py-6 md:px-8 md:py-8 lg:px-16 lg:py-9 rounded-2xl flex flex-col  justify-between space-y-10 lg:space-x-10 max-w-screen-2xl bg-gray-50   text-black dark:text-gray-300">
+        class="dark:bg-gray-900  md:px-8 md:py-8 lg:px-16 lg:py-9 rounded-2xl flex flex-col  justify-between space-y-10 lg:space-x-10 max-w-screen-2xl bg-gray-50   text-black dark:text-gray-300">
+        <!-- class="dark:bg-gray-800 px-6 py-6 md:px-8 md:py-8 lg:px-16 lg:py-9 rounded-2xl flex flex-col  justify-between space-y-10 lg:space-x-10 max-w-screen-2xl bg-gray-50   text-black dark:text-gray-300"> -->
         <div>
             <!-- first row -->
             <div class="mx-auto mb-10">
