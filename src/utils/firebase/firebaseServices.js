@@ -1,4 +1,4 @@
-import { db } from "@/firebase.js";
+import { db } from "@/utils/firebase/firebaseInit.js";
 import {
   collection,
   query,

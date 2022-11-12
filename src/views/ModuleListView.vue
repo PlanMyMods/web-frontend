@@ -10,7 +10,7 @@
 
 <script>
 import ModuleCard from "@/components/ModuleCard.vue";
-import { returnModuleObject } from "@/utils/firebasemethod";
+import { returnModuleObject } from "@/utils/firebase";
 
 export default {
   name: "ModuleListView",
