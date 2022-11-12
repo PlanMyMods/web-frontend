@@ -35,6 +35,10 @@
             <NavbarButtons linkRoute="/settings" linkName="Settings" />
           </li>
 
+          <li>
+            <NavbarButtons linkRoute="/login" linkName="Sign in" />
+          </li>
+
             <!-- <ThemeToggle></ThemeToggle> -->
 
         </ul>
