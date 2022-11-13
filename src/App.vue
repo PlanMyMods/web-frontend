@@ -6,7 +6,7 @@
     <div class="flex flex-col md:flex-row">
       <Sidebar />
       <div
-        class="flex-auto w-full md:w-[calc(100vh-12rem)] h-[calc(100vh-4rem)] md:h-screen overflow-y-scroll"
+        class="flex-auto w-full md:ml-[11rem] md:w-[calc(100vh-11rem)] h-[calc(100vh-4rem)] md:h-screen overflow-y-scroll"
       >
         <div
           class="items-center mx-auto max-w-screen-2xl p-4 sm:p-8 lg:p-10 space-y-5"
