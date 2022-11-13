@@ -1,14 +1,75 @@
 <template>
-  <button
-    type="button"
-    class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+  <div
+    class="z-30 flex flex-col box-border h-12 class-duration class-start-time font-medium text-center justify-center rounded-md text-sm mb-1"
+    :class="`${color} dark:${colorDark} ${textColor} dark:${textColorDark} hover:${hoverColor}  dark:hover:${hoverColorDark}`"
   >
-    <slot>Button</slot>
-  </button>
+    <router-link :to="courseLink">
+      <div>
+        <div class="text-sm font-black tracking-widest break-all">
+          {{ code }}
+        </div>
+      </div>
+    </router-link>
+  </div>
 </template>
 
 <script>
 export default {
   name: "TimetableModule",
+  props: {
+    index: {
+      type: Number,
+      default: 0,
+    },
+    code: {
+      type: String,
+      required: true,
+    },
+    cellMarginLeft: {
+      type: Number,
+      required: true,
+    },
+    cellWidth: {
+      type: Number,
+      required: true,
+    },
+    courseLink: {
+      type: String,
+      required: true,
+    },
+    color: {
+      type: String,
+      default: "bg-red-300",
+    },
+    colorDark: {
+      type: String,
+      default: (props) => props.color,
+    },
+    textColor: {
+      type: String,
+      default: "text-gray-700",
+    },
+    textColorDark: {
+      type: String,
+      default: (props) => props.textColor,
+    },
+    hoverColor: {
+      type: String,
+      default: "text-red-600",
+    },
+    hoverColorDark: {
+      type: String,
+      default: (props) => props.hoverColorDark,
+    },
+  },
 };
 </script>
+
+<style scoped>
+.class-start-time {
+  margin-left: calc((v-bind(cellMarginLeft) - v-bind(index)) * 100% / 15);
+}
+.class-duration {
+  width: calc(100% / 15 * v-bind(cellWidth));
+}
+</style>
