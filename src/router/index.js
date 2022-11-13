@@ -7,7 +7,7 @@ import RegisterView from "@/views/RegisterView.vue";
 import LoginView from "@/views/LoginView.vue";
 
 const routes = [
-  { path: "/", redirect: { name: "Timetable" } },
+  { path: "/", redirect: { name: "Register" } },
   {
     path: "/timetable",
     name: "Timetable",

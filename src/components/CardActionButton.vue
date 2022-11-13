@@ -1,7 +1,11 @@
 <template>
   <div class="mt-5">
     <button
-      :class="`${color} dark:${colorDark} hover:${hoverColor} dark:hover:${hoverColorDark} ${textColor} dark:${textColorDark} font-bold rounded p-3 h-full w-full align-middle flex-auto`"
+      :class="`${color} dark:${colorDark} ${textColor} dark:${textColorDark} font-bold rounded p-3 h-full w-full align-middle flex-auto ${
+        disabled
+          ? 'cursor-not-allowed'
+          : `hover:${hoverColor} dark:hover:${hoverColorDark}`
+      }`"
     >
       <div
         class="flex relative w-full box-border align-baseline justify-center"
@@ -43,6 +47,10 @@ export default {
     hoverColorDark: {
       type: String,
       default: (props) => props.hoverColorDark,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
   },
 };

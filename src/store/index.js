@@ -1,6 +1,7 @@
 import {
   emailRegister,
   emailSignIn,
+  googleSignIn,
   signOutUser,
   updateUserProfile,
 } from "@/utils/firebase";
@@ -36,7 +37,6 @@ const store = createStore({
         throw new Error("Unable to register user");
       }
     },
-
     async logIn(context, { email, password }) {
       const response = await emailSignIn(email, password);
       console.log(response);
@@ -46,12 +46,19 @@ const store = createStore({
         throw new Error("login failed");
       }
     },
-
+    async googleLogIn(context) {
+      const response = await googleSignIn();
+      console.log(response);
+      if (response) {
+        context.commit("setUser", response.user);
+      } else {
+        throw new Error("login failed");
+      }
+    },
     async logOut(context) {
       await signOutUser();
       context.commit("setUser", null);
     },
-
     async fetchUser(context, user) {
       context.commit("setLoggedIn", user !== null);
       if (user) {
