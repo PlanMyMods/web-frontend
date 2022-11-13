@@ -60,9 +60,9 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](.github/images/product-screenshot-timetable.png)
+### Product Screen Shot
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `BeforeClass`, `project_description`
+<img src=".github/images/product-screenshot-timetable.png" alt="Product Screenshot">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
