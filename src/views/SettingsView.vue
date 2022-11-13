@@ -53,5 +53,11 @@ export default {
 
     return { user, signOut };
   },
+
+  methods: {
+    updateUserInfo(){
+      
+    }
+  }
 };
 </script>
