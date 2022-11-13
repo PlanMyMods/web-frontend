@@ -60,3 +60,17 @@ serve -s dist
 
 If your static frontend is deployed to a different domain from your backend API, you will need to properly configure [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
 -->
+
+# Account
+You could either create an account on the website or use an existing test account below:
+
+- Email: test@smu.edu.sg
+- Password: test@smu.edu.sg
+
+# Authors
+IS216 G6 Team 10
+- David Lin
+- Gabriel Wong
+- Jerome Wong
+- Nicklaus Chiok
+- Ong Zi Jian
