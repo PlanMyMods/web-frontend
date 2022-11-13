@@ -40,9 +40,7 @@ export async function getModuleTerms(moduleCode) {
     const sectionData = section.data();
     const sectionTerm = {
       term: term,
-      assessment: sectionData.assessment,
-      exam: sectionData.exam,
-      recommended: sectionData.recommended,
+      ...sectionData,
     };
     terms.push(sectionTerm);
   });

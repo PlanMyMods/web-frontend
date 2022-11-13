@@ -2,15 +2,14 @@
   <div
     class="grid gap-4 grid-cols-1 lg:grid-cols-2 w-full content-between mt-10"
   >
-    <div v-for="(mod, index) in modules" class="flex justify-start mb-3 gap-3">
+    <div
+      v-for="(mod, index) in modules"
+      class="flex justify-center md:justify-start mb-3 gap-3"
+    >
       <div class="w-3 h-full bg-red-100" />
       <div class="w-[14.5rem] xl:min-w-[20rem]">
         <div class="">{{ mod.title }}</div>
-        <div>
-          Exam: {{ formatUnixTime(mod.exam.start) }} •
-          {{ getTimeDifference(mod.exam.start, mod.exam.end) }}
-          hrs
-        </div>
+        <div>{{ examString(mod.exam.start, mod.exam.end) }}</div>
       </div>
       <div>
         <button class="w-6 h-full">
@@ -19,8 +18,8 @@
       </div>
       <div>
         <button class="w-6 h-full" @click="mod.showModule = !mod.showModule">
-          <img v-if="mod.showModule" src="/assets/eyeOpen.svg" />
-          <img v-else src="/assets/eyeClosed.svg" />
+          <img v-show="mod.showModule" src="/assets/eyeOpen.svg" />
+          <img v-show="!mod.showModule" src="/assets/eyeClosed.svg" />
         </button>
       </div>
     </div>
@@ -37,8 +36,8 @@ export default {
         {
           title: "IS110 Information Systems and Innovation",
           exam: {
-            start: 1669681800,
-            end: 1669689000,
+            start: 1669941000,
+            end: 1669948200,
             day: 2,
           },
           recommended: {
@@ -65,9 +64,9 @@ export default {
         {
           title: "IS112 Data Management",
           exam: {
-            start: 1669681800,
-            end: 1669689000,
-            day: 2,
+            start: 1650328200,
+            end: 1650339000,
+            day: 3,
           },
           recommended: {
             hours: {
@@ -77,10 +76,10 @@ export default {
           showModule: true,
         },
         {
-          title: "IS112 Data Management",
+          title: "IS216 Web Development Application II",
           exam: {
-            start: 1669681800,
-            end: 1669689000,
+            start: 1669784400,
+            end: 1669791600,
             day: 2,
           },
           recommended: {
@@ -91,7 +90,7 @@ export default {
           showModule: true,
         },
         {
-          title: "IS112 Data Management",
+          title: "IS215 Digital Business - Technologies and Transformation",
           exam: {
             start: 1669681800,
             end: 1669689000,
@@ -110,6 +109,11 @@ export default {
   methods: {
     formatUnixTime,
     getTimeDifference,
+    examString(start, end) {
+      const startDateTime = formatUnixTime(start);
+      const hours = getTimeDifference(start, end);
+      return `Exam: ${startDateTime} • ${hours} hrs`;
+    },
   },
 };
 </script>
