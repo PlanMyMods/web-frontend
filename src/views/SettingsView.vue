@@ -33,7 +33,6 @@ import { auth } from "@/utils/firebase";
 
 export default {
   name: "Settings",
-
   setup() {
     const store = useStore();
     const router = useRouter();

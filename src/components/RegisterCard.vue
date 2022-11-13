@@ -64,7 +64,8 @@
             colorDark="bg-blue-400"
             hoverColor="bg-blue-800"
             hoverColorDark="bg-blue-600"
-            @click="Register"
+            :disabled="!isAbleToSubmit"
+            @click="isAbleToSubmit && Register"
           />
 
           <div class="flex justify-between items-center mt-5">
@@ -81,7 +82,7 @@
             colorDark="bg-gray-700"
             hoverColor="bg-gray-300"
             hoverColorDark="bg-gray-600"
-            @click="Register"
+            @click="LoginGoogle"
           />
         </div>
       </div>
@@ -93,9 +94,10 @@
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import TextUrl from "@/components/TextUrl.vue";
-import CardTextInput from "./CardTextInput.vue";
-import CardPasswordInput from "./CardPasswordInput.vue";
-import CardActionButton from "./CardActionButton.vue";
+import CardTextInput from "@/components/CardTextInput.vue";
+import CardPasswordInput from "@/components/CardPasswordInput.vue";
+import CardActionButton from "@/components/CardActionButton.vue";
+import { getFirebaseErrorMessage } from "@/utils/firebase";
 
 export default {
   name: "LoginCard",
@@ -116,11 +118,31 @@ export default {
       confirmPasswordError: "",
     };
   },
+  computed: {
+    isAbleToSubmit() {
+      this.validateEmail();
+      this.validatePassword();
+      this.validateConfirmPassword();
+      return (
+        this.username.length > 0 &&
+        this.email.length > 0 &&
+        this.password.length > 0 &&
+        this.confirmPassword.length > 0 &&
+        this.registerError.length === 0 &&
+        this.emailError.length === 0 &&
+        this.passwordError.length === 0 &&
+        this.confirmPasswordError.length === 0
+      );
+    },
+  },
   methods: {
     validateEmail() {
       const re =
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      if (!re.test(this.email)) {
+
+      if (this.email.length === 0) {
+        this.emailError = "";
+      } else if (!re.test(this.email)) {
         // Tests if the email is valid
         this.emailError = "Please enter a valid email.";
       } else if (!this.email.endsWith("smu.edu.sg")) {
@@ -131,14 +153,18 @@ export default {
       }
     },
     validatePassword() {
-      if (this.password.length < 8) {
+      if (this.password.length === 0) {
+        this.passwordError = "";
+      } else if (this.password.length < 8) {
         this.passwordError = "Password must be at least 8 characters long.";
       } else {
         this.passwordError = "";
       }
     },
     validateConfirmPassword() {
-      if (this.password !== this.confirmPassword) {
+      if (this.password.length === 0) {
+        this.confirmPasswordError = "";
+      } else if (this.password !== this.confirmPassword) {
         this.confirmPasswordError = "Password does not match!";
       } else {
         this.confirmPasswordError = "";
@@ -153,8 +179,17 @@ export default {
         });
         this.router.push("/");
       } catch (err) {
-        console.log(err);
-        this.registerError = err.message;
+        this.registerError = getFirebaseErrorMessage(err);
+        this.$toast.error(this.registerError);
+      }
+    },
+    async LoginGoogle() {
+      try {
+        await this.store.dispatch("googleLogIn");
+        this.router.push("/modules");
+      } catch (err) {
+        this.registerError = getFirebaseErrorMessage(err);
+        this.$toast.error(this.registerError);
       }
     },
   },

@@ -26,7 +26,8 @@
             colorDark="bg-blue-400"
             hoverColor="bg-blue-800"
             hoverColorDark="bg-blue-600"
-            @click="Login"
+            :disabled="!isAbleToSubmit"
+            @click="isAbleToSubmit && Login"
           />
 
           <div class="flex justify-between items-center mt-5">
@@ -35,17 +36,16 @@
             <span class="border-t-[1px] w-[40%] box-border"></span>
           </div>
 
-          <div class="mt-5">
-            <button
-              class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 font-bold rounded p-3 h-full w-full align-middle flex-auto"
-            >
-              <div
-                class="flex relative w-full box-border align-baseline justify-center"
-              >
-                Continue with Google
-              </div>
-            </button>
-          </div>
+          <CardActionButton
+            text="Continue with Google"
+            textColor="text-gray-700"
+            textColorDark="text-gray-300"
+            color="bg-gray-200"
+            colorDark="bg-gray-700"
+            hoverColor="bg-gray-300"
+            hoverColorDark="bg-gray-600"
+            @click="LoginGoogle"
+          />
         </div>
       </div>
     </div>
@@ -60,6 +60,7 @@ import TextUrl from "@/components/TextUrl.vue";
 import CardTextInput from "@/components/CardTextInput.vue";
 import CardPasswordInput from "@/components/CardPasswordInput.vue";
 import CardActionButton from "@/components/CardActionButton.vue";
+import { getFirebaseErrorMessage } from "@/utils/firebase";
 
 export default {
   name: "LoginCard",
@@ -76,6 +77,11 @@ export default {
       loginError: "",
     };
   },
+  computed: {
+    isAbleToSubmit() {
+      return this.email.length > 0 && this.password.length > 0;
+    },
+  },
   methods: {
     async Login() {
       console.log("logging");
@@ -86,8 +92,17 @@ export default {
         });
         this.router.push("/");
       } catch (err) {
-        console.log(err);
-        this.loginError = err.message;
+        this.loginError = getFirebaseErrorMessage(err);
+        this.$toast.error(this.loginError);
+      }
+    },
+    async LoginGoogle() {
+      try {
+        await this.store.dispatch("googleLogIn");
+        this.router.push("/modules");
+      } catch (err) {
+        this.loginError = getFirebaseErrorMessage(err);
+        this.$toast.error(this.loginError);
       }
     },
   },
