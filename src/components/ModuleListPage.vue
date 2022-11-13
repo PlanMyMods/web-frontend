@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-1 md:px-0 bg-gray-200 dark:bg-gray-800">
+  <div class="py-5 md:px-0 bg-gray-200 dark:bg-gray-900 sticky top-0">
     <div class="relative mx-auto">
       <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
         <img class="w-5 h-5" src="/assets/search.svg" alt="" />
