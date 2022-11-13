@@ -25,17 +25,11 @@
       <hr class="my-8 h-px bg-gray-200 border-0 dark:bg-gray-700" />
 
       <!-- second row -->
-      <div
-        class="flex flex-col lg:flex-row w-full mx-auto mb-10 lg:justify-between my-10"
-      >
-        <div
-          class="w-full lg:w-[50%] mx-auto lg:mx-0 mb-12 lg:mb-0 flex justify-center lg:justify-start"
-        >
+      <div class="flex flex-col lg:flex-row w-full mx-auto mb-10 lg:justify-between my-10">
+        <div class="w-full lg:w-[50%] mx-auto lg:mx-0 mb-12 lg:mb-0 flex justify-center lg:justify-start">
           <ModuleCardTerms :terms="moduleTerms" :courseLink="moduleData.link" />
         </div>
-        <div
-          class="w-full lg:w-[50%] flex justify-center lg:justify-end items-center"
-        >
+        <div class="w-full lg:w-[50%] flex justify-center lg:justify-end items-center">
           <div class="w-[300px]">
             <DoughnutChart
               :assessmentName="assignments[0]"
@@ -57,7 +51,7 @@
       <hr class="my-8 h-px bg-gray-200 border-0 dark:bg-gray-700" />
 
       <!-- timetable component -->
-      <h1 class="text-3xl font-extrabold dark:text-gray-300 py-5 text-gray-600">
+      <h1 class="text-3xl text-center font-extrabold dark:text-gray-300 py-5 mb-10 text-gray-600">
         Timetable
       </h1>
       <div class="w-full overflow-x-auto">
