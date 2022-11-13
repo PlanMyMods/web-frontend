@@ -1,6 +1,6 @@
 <template>
   <!-- not completed -->
-  <h1 class="text-3xl font-extrabold dark:text-gray-300 py-5 text-gray-600 mb-10">
+  <h1 class="text-3xl font-extrabold text-center lg:text-left dark:text-gray-300 py-5 text-gray-600 mb-10">
     Pre-requisite Tree
   </h1>
   <div class="w-full overflow-x-auto">

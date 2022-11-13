@@ -39,7 +39,7 @@
       <hr class="my-8 h-px bg-gray-200 border-0 dark:bg-gray-700" />
 
       <!-- timetable component -->
-      <h1 class="text-3xl text-center font-extrabold dark:text-gray-300 py-5 mb-10 text-gray-600">
+      <h1 class="text-3xl text-center lg:text-left font-extrabold dark:text-gray-300 py-5 mb-10 text-gray-600">
         Timetable
       </h1>
       <div class="w-full overflow-x-auto">
