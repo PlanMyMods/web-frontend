@@ -36,8 +36,8 @@ export default {
         {
           title: "IS110 Information Systems and Innovation",
           exam: {
-            start: 1669681800,
-            end: 1669689000,
+            start: 1669941000,
+            end: 1669948200,
             day: 2,
           },
           recommended: {
@@ -64,9 +64,9 @@ export default {
         {
           title: "IS112 Data Management",
           exam: {
-            start: 1669681800,
-            end: 1669689000,
-            day: 2,
+            start: 1650328200,
+            end: 1650339000,
+            day: 3,
           },
           recommended: {
             hours: {
@@ -76,10 +76,10 @@ export default {
           showModule: true,
         },
         {
-          title: "IS112 Data Management",
+          title: "IS216 Web Development Application II",
           exam: {
-            start: 1669681800,
-            end: 1669689000,
+            start: 1669784400,
+            end: 1669791600,
             day: 2,
           },
           recommended: {
@@ -90,7 +90,7 @@ export default {
           showModule: true,
         },
         {
-          title: "IS112 Data Management",
+          title: "IS215 Digital Business - Technologies and Transformation",
           exam: {
             start: 1669681800,
             end: 1669689000,
