@@ -11,7 +11,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/SMU-IS216G6T10/smumods-frontend">
-    <img src=".github/images/BeforeClass.png" alt="Logo" width="160" height="160">
+    <img src="public/android-chrome-512x512.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">BeforeClass</h3>
@@ -60,9 +60,11 @@
 
 ## About The Project
 
-### Product Screen Shot
-
-<img src=".github/images/product-screenshot-timetable.png" alt="Product Screenshot">
+<div align="center">
+  <h3>Product Screen Shot</h3>
+  <br />
+  <img src=".github/images/product-screenshot-timetable.png" alt="Product Screenshot" width="800">
+</div>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
