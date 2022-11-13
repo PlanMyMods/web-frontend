@@ -33,7 +33,7 @@
           </div>
           <ul class="space-y-2 px-0">
             <li>
-              <Searchbar />
+              <!-- <Searchbar /> -->
             </li>
             <li>
               <SidebarListItem linkName="Timetable" linkRoute="/timetable" linkImagePath="/assets/timetable.svg" />
