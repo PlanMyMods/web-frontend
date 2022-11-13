@@ -1,19 +1,13 @@
 <template>
-  <div
-    class="flex flex-col justify-between space-y-10 lg:space-x-10 max-w-screen-2xl text-black dark:text-gray-300"
-  >
+  <div class="flex flex-col justify-between space-y-10 lg:space-x-10 max-w-screen-2xl text-black dark:text-gray-300">
     <div>
       <!-- first row -->
       <div class="mx-auto mb-10">
         <!-- <div class="text-3xl font-extrabold py-5"> -->
-        <div
-          class="text-3xl font-extrabold pt-5 dark:text-blue-300 text-blue-600"
-        >
+        <div class="text-3xl font-extrabold pt-5 dark:text-blue-300 text-blue-600">
           {{ moduleData.code }}
         </div>
-        <div
-          class="text-3xl font-extrabold pt-2 dark:text-gray-300 text-gray-600"
-        >
+        <div class="text-3xl font-extrabold pt-2 dark:text-gray-300 text-gray-600">
           {{ moduleData.name }}
         </div>
         <!-- </div> -->
@@ -22,19 +16,17 @@
           {{ moduleData.description.long }}
         </div>
       </div>
-      <hr class="my-8 h-px bg-gray-200 border-0 dark:bg-gray-700" />
+      <hr v-if="moduleTerms[0] != null" class="my-8 h-px bg-gray-200 border-0 dark:bg-gray-700" />
 
       <!-- second row -->
-      <div class="flex flex-col lg:flex-row w-full mx-auto mb-10 lg:justify-between my-10">
-        <div class="w-full lg:w-[50%] mx-auto lg:mx-0 mb-12 lg:mb-0 flex justify-center lg:justify-start">
+      <div class="flex flex-col lg:flex-row w-full mx-auto mb-10 lg:justify-between my-10"
+        v-if="moduleTerms[0] != null">
+        <div class=" w-full lg:w-[50%] mx-auto lg:mx-0 mb-12 lg:mb-0 flex justify-center lg:justify-start">
           <ModuleCardTerms :terms="moduleTerms" :courseLink="moduleData.link" />
         </div>
         <div class="w-full lg:w-[50%] flex justify-center lg:justify-end items-center">
           <div class="w-[300px]">
-            <DoughnutChart
-              :assessmentName="assignments[0]"
-              :weightage="assignments[1]"
-            />
+            <DoughnutChart :assessmentName="assignments[0]" :weightage="assignments[1]" />
           </div>
         </div>
       </div>
@@ -42,16 +34,12 @@
 
       <!-- pre-req tree -->
       <div class="my-10">
-        <PrerequisiteTree
-          :prerequisites="prerequisites"
-          :moduleName="moduleData.code"
-          :isOr="isOr"
-        />
+        <PrerequisiteTree :prerequisites="prerequisites" :moduleName="moduleData.code" :isOr="isOr" />
       </div>
       <hr class="my-8 h-px bg-gray-200 border-0 dark:bg-gray-700" />
 
       <!-- timetable component -->
-      <h1 class="text-3xl text-center font-extrabold dark:text-gray-300 py-5 mb-10 text-gray-600">
+      <h1 class="text-3xl text-center lg:text-left font-extrabold dark:text-gray-300 py-5 mb-10 text-gray-600">
         Timetable
       </h1>
       <div class="w-full overflow-x-auto">
@@ -104,8 +92,11 @@ export default {
       }
       return arr;
     }
+    let assignments = null
+    if (moduleTerms[0] != null) {
+      assignments = mapAssessmentArray(moduleTerms[0]);
+    }
 
-    const assignments = mapAssessmentArray(moduleTerms[0]);
     const prerequisites = mapPrerequisiteArray(moduleData.prerequisites);
     console.log("assignments", assignments);
     console.log("prerequisites", prerequisites);
