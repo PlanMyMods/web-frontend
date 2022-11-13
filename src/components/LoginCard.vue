@@ -27,7 +27,7 @@
             hoverColor="bg-blue-800"
             hoverColorDark="bg-blue-600"
             :disabled="!isAbleToSubmit"
-            @click="isAbleToSubmit && Login"
+            @click="Login"
           />
 
           <div class="flex justify-between items-center mt-5">
@@ -84,6 +84,9 @@ export default {
   },
   methods: {
     async Login() {
+      if (!this.isAbleToSubmit) {
+        return;
+      }
       console.log("logging");
       try {
         await this.store.dispatch("logIn", {

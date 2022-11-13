@@ -65,7 +65,7 @@
             hoverColor="bg-blue-800"
             hoverColorDark="bg-blue-600"
             :disabled="!isAbleToSubmit"
-            @click="isAbleToSubmit && Register"
+            @click="Register"
           />
 
           <div class="flex justify-between items-center mt-5">
@@ -171,6 +171,9 @@ export default {
       }
     },
     async Register() {
+      if (!this.isAbleToSubmit) {
+        return;
+      }
       try {
         await this.store.dispatch("register", {
           email: this.email,
@@ -195,13 +198,16 @@ export default {
   },
   watch: {
     email() {
+      this.registerError = "";
       this.validateEmail();
     },
     password() {
+      this.registerError = "";
       this.validatePassword();
       this.validateConfirmPassword();
     },
     confirmPassword() {
+      this.registerError = "";
       this.validatePassword();
       this.validateConfirmPassword();
     },
