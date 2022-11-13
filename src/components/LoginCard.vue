@@ -26,7 +26,8 @@
             colorDark="bg-blue-400"
             hoverColor="bg-blue-800"
             hoverColorDark="bg-blue-600"
-            @click="Login"
+            :disabled="!isAbleToSubmit"
+            @click="isAbleToSubmit && Login"
           />
 
           <div class="flex justify-between items-center mt-5">
@@ -75,6 +76,11 @@ export default {
       password: "",
       loginError: "",
     };
+  },
+  computed: {
+    isAbleToSubmit() {
+      return this.email.length > 0 && this.password.length > 0;
+    },
   },
   methods: {
     async Login() {
