@@ -5,7 +5,7 @@
     <!-- topnav -->
     <div v-show="isMobile">
       <nav class="bg-gray-50 border-gray-200   p-3 dark:bg-gray-800 grid grid-cols-3">
-        <div class="col-span-1 flex items-center justify-start">
+        <div class="col-span-1 pl-3 flex items-center justify-start">
           <button class="self-center text-2xl tracking-tight font-semibold whitespace-nowrap dark:text-white">
             <TextUrl text="BeforeClass" link="/timetable" :router="true" />
           </button>
@@ -23,7 +23,7 @@
     <!-- sidenav -->
     <Transition name="sideNav">
       <div v-show="!isMobile || showSideBar"
-        class=" bg-gray-50 dark:bg-gray-800 p-3 pb-8 h-screen min-w-[11rem] w-[11rem] flex flex-col justify-between fixed top-0 left-0 z-50 drop-shadow-xl shadow-2xl">
+        class=" bg-gray-50 dark:bg-gray-800 p-3 pb-8 h-screen min-w-[11rem] w-[11rem] flex flex-col justify-between fixed top-0 left-0 z-50 drop-shadow-md shadow-md dark:drop-shadow-2xl dark:shadow-2xl">
         <div>
           <div class="p-2 pb-4 rounded-lg text-center scale-100">
             <button
