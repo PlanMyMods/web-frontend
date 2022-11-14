@@ -1,5 +1,5 @@
 <template>
-  <div class="flex h-[calc(100vh-9rem)] md:h-[calc(100vh-5rem)]">
+  <div class="flex h-full">
     <div class="m-auto justify-center">
       <RegisterCard />
     </div>
