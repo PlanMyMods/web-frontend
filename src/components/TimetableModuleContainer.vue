@@ -8,16 +8,17 @@
     >
       <div class="w-3 h-full bg-red-100" />
       <div class="w-[14.5rem] xl:min-w-[20rem]">
-        <div class="">{{ mod.title }}</div>
-        <div>{{ examString(mod.exam.start, mod.exam.end) }}</div>
+        <div class="font-semibold">{{ mod.code }}</div>
+        <div class="">{{ mod.name }}</div>
+        <div>{{ getExamString(mod.exam.start, mod.exam.end) }}</div>
       </div>
       <div>
         <button class="w-6 h-full">
-          <img src="/assets/trash.svg" @click="modules.splice(index, 1)" />
+          <img src="/assets/trash.svg" @click="handleDeleteModule(mod)" />
         </button>
       </div>
       <div>
-        <button class="w-6 h-full" @click="mod.showModule = !mod.showModule">
+        <button class="w-6 h-full" @click="handleShowModuleClick(mod)">
           <img v-show="mod.showModule" src="/assets/eyeOpen.svg" />
           <img v-show="!mod.showModule" src="/assets/eyeClosed.svg" />
         </button>
@@ -28,91 +29,46 @@
 
 <script>
 import { formatUnixTime, getTimeDifference } from "@/utils/datetime";
+import { useStore } from "vuex";
+
 export default {
   name: "TimetableModuleContainer",
-  data() {
-    return {
-      modules: [
-        {
-          title: "IS110 Information Systems and Innovation",
-          exam: {
-            start: 1669941000,
-            end: 1669948200,
-            day: 2,
-          },
-          recommended: {
-            hours: {
-              total: 4,
-            },
-          },
-          showModule: true,
-        },
-        {
-          title: "IS111 Introduction to Programming",
-          exam: {
-            start: 1669681800,
-            end: 1669689000,
-            day: 2,
-          },
-          recommended: {
-            hours: {
-              total: 8,
-            },
-          },
-          showModule: true,
-        },
-        {
-          title: "IS112 Data Management",
-          exam: {
-            start: 1650328200,
-            end: 1650339000,
-            day: 3,
-          },
-          recommended: {
-            hours: {
-              total: 12,
-            },
-          },
-          showModule: true,
-        },
-        {
-          title: "IS216 Web Development Application II",
-          exam: {
-            start: 1669784400,
-            end: 1669791600,
-            day: 2,
-          },
-          recommended: {
-            hours: {
-              total: 12,
-            },
-          },
-          showModule: true,
-        },
-        {
-          title: "IS215 Digital Business - Technologies and Transformation",
-          exam: {
-            start: 1669681800,
-            end: 1669689000,
-            day: 2,
-          },
-          recommended: {
-            hours: {
-              total: 12,
-            },
-          },
-          showModule: true,
-        },
-      ],
-    };
+  setup() {
+    const store = useStore();
+    return { store };
+  },
+  computed: {
+    user() {
+      return this.store.state.user.data;
+    },
+  },
+  props: {
+    modules: {
+      type: Array,
+      default: [],
+    },
   },
   methods: {
     formatUnixTime,
     getTimeDifference,
-    examString(start, end) {
+    getExamString(start, end) {
       const startDateTime = formatUnixTime(start);
       const hours = getTimeDifference(start, end);
       return `Exam: ${startDateTime} • ${hours} hrs`;
+    },
+    handleShowModuleClick(mod) {
+      this.store.dispatch("updateModuleVisibilityToUserTimetable", {
+        moduleCode: mod.code,
+        sectionCode: "AY2223T1G1",
+        showModule: mod.showModule,
+      });
+    },
+    handleDeleteModule(mod) {
+      console.log("handleDeleteModule");
+      this.store.dispatch("removeFromUserTimetable", {
+        moduleCode: mod.code,
+        sectionCode: "AY2223T1G1",
+      });
     },
   },
 };

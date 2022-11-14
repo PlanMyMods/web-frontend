@@ -10,10 +10,10 @@
       >
         <ol>
           <TimetableRow
-            v-for="day in days"
-            :key="day.day"
-            :day="day.day"
-            :duplicatedModules="day.modules"
+            v-for="(mods, day, _) in days"
+            :key="day"
+            :day="day"
+            :duplicatedModules="mods"
           />
         </ol>
       </div>
@@ -26,107 +26,24 @@ import TimetableRow from "./TimetableRow.vue";
 
 export default {
   name: "Timetable",
+  setup(props) {
+    console.log(props.days);
+  },
+  props: {
+    days: {
+      type: Object,
+      default: {
+        mon: [],
+        tue: [],
+        wed: [],
+        thu: [],
+        fri: [],
+        sat: [],
+      },
+    },
+  },
   data() {
     return {
-      days: [
-        // TODO: store user modules on firebase
-        // TODO: convert modules into duplicated modules data structure
-        {
-          day: "MON",
-          modules: [
-            [
-              {
-                code: "IS111",
-                link: "/module/IS111",
-                terms: [
-                  {
-                    class: {
-                      time_start: "0815",
-                      time_end: "1130",
-                    },
-                  },
-                ],
-              },
-            ],
-          ],
-        },
-        {
-          day: "TUE",
-          modules: [
-            [
-              {
-                code: "IS216",
-                link: "/module/IS216",
-                terms: [
-                  {
-                    class: {
-                      time_start: "1210",
-                      time_end: "1525",
-                    },
-                  },
-                ],
-              },
-              {
-                code: "IS112",
-                link: "/module/IS112",
-                terms: [
-                  {
-                    class: {
-                      time_start: "1530",
-                      time_end: "1845",
-                    },
-                  },
-                ],
-              },
-            ],
-            [
-              {
-                code: "IS215",
-                link: "/module/IS215",
-                terms: [
-                  {
-                    class: {
-                      time_start: "1210",
-                      time_end: "1525",
-                    },
-                  },
-                ],
-              },
-            ],
-          ],
-        },
-        {
-          day: "WED",
-          modules: [
-            [
-              {
-                code: "IS110",
-                link: "/module/IS110",
-                terms: [
-                  {
-                    class: {
-                      time_start: "1210",
-                      time_end: "1525",
-                    },
-                  },
-                ],
-              },
-            ],
-          ],
-        },
-        {
-          day: "THU",
-          modules: [[]],
-        },
-        {
-          day: "FRI",
-          modules: [[]],
-        },
-        {
-          day: "SAT",
-          modules: [[]],
-        },
-      ],
       hours: [
         "0800",
         "0900",

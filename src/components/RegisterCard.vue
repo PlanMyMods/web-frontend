@@ -180,6 +180,7 @@ export default {
           password: this.password,
           name: this.username,
         });
+        this.registerError = "";
         this.router.push("/");
       } catch (err) {
         this.registerError = getFirebaseErrorMessage(err);
@@ -189,6 +190,7 @@ export default {
     async LoginGoogle() {
       try {
         await this.store.dispatch("googleLogIn");
+        this.registerError = "";
         this.router.push("/modules");
       } catch (err) {
         this.registerError = getFirebaseErrorMessage(err);

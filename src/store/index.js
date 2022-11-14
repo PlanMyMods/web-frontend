@@ -4,6 +4,10 @@ import {
   googleSignIn,
   signOutUser,
   updateUserProfile,
+  addModuleToUserTimetable,
+  removeModuleFromUserTimetable,
+  getUserTimetableByTerm,
+  getUserByUid,
 } from "@/utils/firebase";
 import { createStore } from "vuex";
 
@@ -62,13 +66,65 @@ const store = createStore({
     async fetchUser(context, user) {
       context.commit("setLoggedIn", user !== null);
       if (user) {
+        const userData = await getUserByUid(user.uid);
+        const timetable = await getUserTimetableByTerm(user, "AY202223T1");
+
+        console.log(context.state.user);
         context.commit("setUser", {
+          ...userData,
           displayName: user.displayName,
           email: user.email,
+          uid: user.uid,
+          timetable: timetable,
         });
       } else {
         context.commit("setUser", null);
       }
+    },
+    async addToUserTimetable(context, { moduleCode, sectionCode }) {
+      const updatedUser = await addModuleToUserTimetable(
+        context.state.user.data,
+        moduleCode,
+        sectionCode
+      );
+      context.commit("setUser", { ...context.state.user.data, ...updatedUser });
+    },
+    async removeFromUserTimetable(context, { moduleCode, sectionCode }) {
+      const updatedUser = await removeModuleFromUserTimetable(
+        context.state.user.data,
+        moduleCode,
+        sectionCode
+      );
+      console.log(updatedUser);
+      context.commit("setUser", { ...context.state.user.data, ...updatedUser });
+    },
+    updateModuleVisibilityToUserTimetable(
+      context,
+      { moduleCode, sectionCode, showModule }
+    ) {
+      for (const [day, dayArr] of Object.entries(
+        context.state.user.data.timetable
+      )) {
+        if (dayArr.length === 0) {
+          continue;
+        }
+        for (const daySubarray of dayArr) {
+          if (daySubarray.length === 0) {
+            continue;
+          }
+          for (const mod of daySubarray) {
+            if (mod.code !== moduleCode) {
+              continue;
+            }
+            mod.showModule = !showModule;
+          }
+        }
+      }
+
+      context.commit("setUser", {
+        ...context.state.user.data,
+        timetable: context.state.user.data.timetable,
+      });
     },
   },
 });
