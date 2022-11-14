@@ -10,7 +10,7 @@
     </div>
   </div>
   <ModuleCard v-for="mod in filteredMods" :key="mod.code" :validTerms="validTerms" :mod="mod" :terms="mod.terms"
-    :linkRoute="'module/' + mod.code" />
+    :linkRoute="'modules/' + mod.code" />
 </template>
 
 <script>
