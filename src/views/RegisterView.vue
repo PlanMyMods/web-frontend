@@ -39,7 +39,7 @@ export default {
     user: {
       handler: function (newVal, oldVal) {
         if (newVal.loggedIn) {
-          this.router.push("/modules");
+          this.router.push("/settings");
         }
       },
       deep: true,
