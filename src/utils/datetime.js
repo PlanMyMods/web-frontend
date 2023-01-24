@@ -23,3 +23,22 @@ export const calcTimetableCellValues = (start, end) => {
 
   return { cellWidth, cellMarginLeft };
 };
+
+export const getCurrentAY = () => {
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  let term = "T1"; // Default to Term 1 (Aug to Nov)
+  if (month >= 0 && month <= 3) {
+    // Aug to Nov, Term 1
+    term = "T2";
+  } else if (month === 4) {
+    // May, Term 3A
+    term = "T3A";
+  } else if (month >= 5 && month <= 6) {
+    // Jun to Jul, Term 3B
+    term = "T3B";
+  }
+
+  return `AY${year}${(year + 1).toString().slice(-2)}${term}`;
+};

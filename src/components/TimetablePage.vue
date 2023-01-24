@@ -1,7 +1,9 @@
 <template>
   <div v-if="user !== null" class="flex flex-wrap">
-    <Timetable :days="sortByDayofWeek(user.timetable)" />
-    <TimetableModuleContainer :modules="flattenTimetableObj(user.timetable)" />
+    <Timetable :days="sortByDayofWeek(user.timetable[getCurrentAY()])" />
+    <TimetableModuleContainer
+      :modules="flattenTimetableObj(user.timetable[getCurrentAY()])"
+    />
   </div>
   <div v-else class="flex flex-wrap">
     <Timetable />
@@ -12,6 +14,7 @@
 <script>
 import { useStore } from "vuex";
 import { auth } from "@/utils/firebase";
+import { getCurrentAY } from "@/utils/datetime";
 import Timetable from "@/components/Timetable.vue";
 import TimetableModuleContainer from "@/components/TimetableModuleContainer.vue";
 
@@ -32,6 +35,7 @@ export default {
     },
   },
   methods: {
+    getCurrentAY,
     sortByDayofWeek(schedule) {
       const days = {
         mon: [],

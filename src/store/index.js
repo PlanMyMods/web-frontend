@@ -1,3 +1,4 @@
+import { getCurrentAY } from "@/utils/datetime";
 import {
   emailRegister,
   emailSignIn,
@@ -67,15 +68,17 @@ const store = createStore({
       context.commit("setLoggedIn", user !== null);
       if (user) {
         const userData = await getUserByUid(user.uid);
-        const timetable = await getUserTimetableByTerm(user, "AY202223T1");
-
+        const currentAY = getCurrentAY();
+        const termTimetable = await getUserTimetableByTerm(user, currentAY);
         console.log(context.state.user);
         context.commit("setUser", {
           ...userData,
           displayName: user.displayName,
           email: user.email,
           uid: user.uid,
-          timetable: timetable,
+          timetable: {
+            [currentAY]: termTimetable,
+          },
         });
       } else {
         context.commit("setUser", null);
@@ -103,7 +106,7 @@ const store = createStore({
       { moduleCode, sectionCode, showModule }
     ) {
       for (const [day, dayArr] of Object.entries(
-        context.state.user.data.timetable
+        context.state.user.data.timetable[getCurrentAY()]
       )) {
         if (dayArr.length === 0) {
           continue;

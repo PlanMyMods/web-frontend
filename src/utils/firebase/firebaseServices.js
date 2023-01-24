@@ -11,6 +11,7 @@ import {
   arrayUnion,
   arrayRemove,
 } from "firebase/firestore";
+import { getCurrentAY } from "../datetime";
 
 // ----------------------- Modules Collection -----------------------
 
@@ -224,7 +225,7 @@ export const addModuleToUserTimetable = async (
   const dayName = days[section.class.day];
 
   const updateTimetableFields = {
-    [`timetable.AY202223T1.${dayName}`]: arrayUnion(
+    [`timetable.${getCurrentAY()}.${dayName}`]: arrayUnion(
       doc(db, "Modules", moduleCode, "Sections", section.sectionId)
     ),
   };
@@ -252,7 +253,7 @@ export const removeModuleFromUserTimetable = async (
   const days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
   const dayName = days[section.class.day];
   const updateTimetableFields = {
-    [`timetable.AY202223T1.${dayName}`]: arrayRemove(
+    [`timetable.${getCurrentAY()}.${dayName}`]: arrayRemove(
       doc(db, "Modules", moduleCode, "Sections", section.sectionId)
     ),
   };
@@ -281,9 +282,6 @@ export const getUserTimetableByTerm = async (user, termId) => {
     fri: [],
     sat: [],
   };
-
-  console.log(Object.entries(termTimetable));
-
   for (const [day, modules] of Object.entries(termTimetable)) {
     if (modules.length === 0) {
       continue;
