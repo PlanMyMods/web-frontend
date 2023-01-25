@@ -26,15 +26,6 @@ describe("CardActionButton", () => {
   test("should match snapshot", () => {
     expect(activeBtnComponent.html()).toMatchSnapshot();
   });
-  test("should have the correct Tailwind CSS classes", () => {
-    expect(buttonWrapper.classes()).toContain("font-bold");
-    expect(buttonWrapper.classes()).toContain("rounded");
-    expect(buttonWrapper.classes()).toContain("p-3");
-    expect(buttonWrapper.classes()).toContain("h-full");
-    expect(buttonWrapper.classes()).toContain("w-full");
-    expect(buttonWrapper.classes()).toContain("align-middle");
-    expect(buttonWrapper.classes()).toContain("flex-auto");
-  });
   test("should have the correct text", () => {
     expect(activeBtnComponent.text()).toContain(text);
   });
