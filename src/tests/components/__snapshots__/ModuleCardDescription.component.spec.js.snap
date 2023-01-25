@@ -1,0 +1,12 @@
+// Vitest Snapshot v1
+
+exports[`ModuleCardDescription > should match snapshot 1`] = `
+"<div class=\\"block-content text-xs lg:text-base\\" data-v-bf9c5abb=\\"\\">
+  <transition-stub mode=\\"out-in\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" data-v-bf9c5abb=\\"\\">
+    <div class=\\"block-content__preview transition-transform\\" data-v-bf9c5abb=\\"\\">
+      <p data-v-bf9c5abb=\\"\\">Test description</p>
+    </div>
+  </transition-stub>
+  <!--v-if-->
+</div>"
+`;
