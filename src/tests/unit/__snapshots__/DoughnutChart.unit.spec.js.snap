@@ -1,0 +1,3 @@
+// Vitest Snapshot v1
+
+exports[`DoughnutChart > should match snapshot 1`] = `"<canvas id=\\"myChart\\" width=\\"300\\" height=\\"300\\"></canvas>"`;
