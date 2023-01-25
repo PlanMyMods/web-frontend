@@ -1,0 +1,8 @@
+// Vitest Snapshot v1
+
+exports[`CardTextInput > should match snapshot 1`] = `
+"<div class=\\"flex flex-col flex-nowrap box-border\\">
+  <div class=\\"whitespace-normal text-sm font-medium text-gray-700 dark:text-gray-300\\">Name</div>
+  <div class=\\"bg-white dark:bg-gray-800 border dark:border-gray-600 drop-shadow mt-3 mb-1\\"><input class=\\"relative inline-flex flex-auto whitespace-nowrap focus:outline-none text-left text-base select-auto w-full z-10 p-2 text-gray-700 dark:text-gray-300 dark:bg-gray-800\\" name=\\"Name\\"></div>
+</div>"
+`;
