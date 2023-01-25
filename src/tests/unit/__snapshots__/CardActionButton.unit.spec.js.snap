@@ -1,0 +1,7 @@
+// Vitest Snapshot v1
+
+exports[`CardActionButton > should match snapshot 1`] = `
+"<div class=\\"mt-5\\"><button class=\\"bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-bold rounded p-3 h-full w-full align-middle flex-auto hover:bg-gray-300 dark:hover:bg-gray-600\\">
+    <div class=\\"flex relative w-full box-border align-baseline justify-center\\">Button Text</div>
+  </button></div>"
+`;
