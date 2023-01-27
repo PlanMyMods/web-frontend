@@ -10,15 +10,6 @@
     <div
       class="relative flex flex-auto flex-col min-h-[3.6rem] p-1 pl-0 bg-[length:13.34%_14.285%] bg-gradient-row-50 dark:bg-gradient-row-50-dark"
     >
-      <!-- <TimetableModule
-        v-for="mod in modules"
-        :key="mod.code"
-        :code="mod.code"
-        :start="mod.terms.at(-1).class.time_start"
-        :end="mod.terms.at(-1).class.time_end"
-        :courseLink="mod.link"
-      /> -->
-
       <div
         v-for="modules in duplicatedModules"
         class="flex relative flex-[1_0_auto] min-w-[4rem]"
@@ -27,15 +18,14 @@
           v-for="(mod, index) in modules"
           :key="mod.code"
           :code="mod.code"
+          :showModule="mod.showModule"
           :cellMarginLeft="
-            getTimetableCellValues(mod.terms.at(-1).class, modules, index)
-              .cellMarginLeft
+            getTimetableCellValues(mod.class, modules, index).cellMarginLeft
           "
           :cellWidth="
-            getTimetableCellValues(mod.terms.at(-1).class, modules, index)
-              .cellWidth
+            getTimetableCellValues(mod.class, modules, index).cellWidth
           "
-          :courseLink="mod.link"
+          :courseLink="`/modules/${mod.code}`"
         />
       </div>
     </div>
@@ -48,7 +38,7 @@ import { calcTimetableCellValues } from "@/utils/datetime";
 
 export default {
   setup(props) {
-    console.log(props.modules);
+    console.log(props.duplicatedModules);
   },
   methods: {
     previousDurationSum(index) {
@@ -61,7 +51,7 @@ export default {
       if (index > 0) {
         let marginToSubtract = 0;
         for (let i = 0; i < index; i++) {
-          const prevModClass = modules[i].terms.at(-1).class;
+          const prevModClass = modules[i].class;
           const prevStart = prevModClass.time_start;
           const prevEnd = prevModClass.time_end;
           const prevCellValues = calcTimetableCellValues(prevStart, prevEnd);

@@ -1,16 +1,16 @@
 <template>
-  <div
+  <router-link
+    :to="courseLink"
+    v-show="showModule"
     class="z-30 flex flex-col box-border h-12 class-duration class-start-time font-medium text-center justify-center rounded-md text-sm mb-1"
     :class="`${color} dark:${colorDark} ${textColor} dark:${textColorDark} hover:${hoverColor}  dark:hover:${hoverColorDark}`"
   >
-    <router-link :to="courseLink">
-      <div>
-        <div class="text-sm font-black tracking-widest break-all">
-          {{ code }}
-        </div>
+    <div>
+      <div class="text-sm font-black tracking-widest break-all">
+        {{ code }}
       </div>
-    </router-link>
-  </div>
+    </div>
+  </router-link>
 </template>
 
 <script>
@@ -24,6 +24,10 @@ export default {
     code: {
       type: String,
       required: true,
+    },
+    showModule: {
+      type: Boolean,
+      default: true,
     },
     cellMarginLeft: {
       type: Number,

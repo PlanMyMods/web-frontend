@@ -1,5 +1,5 @@
 <template>
-  <div class="flex h-[calc(100vh-9rem)] md:h-[calc(100vh-5rem)]">
+  <div class="flex h-full">
     <div class="m-auto justify-center">
       <RegisterCard />
     </div>
@@ -39,7 +39,7 @@ export default {
     user: {
       handler: function (newVal, oldVal) {
         if (newVal.loggedIn) {
-          this.router.push("/modules");
+          this.router.push("/settings");
         }
       },
       deep: true,

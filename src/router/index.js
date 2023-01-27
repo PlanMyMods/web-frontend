@@ -24,7 +24,7 @@ const routes = [
     component: Settings,
   },
   {
-    path: "/module/:id",
+    path: "/modules/:id",
     name: "ModulePage",
     component: ModulePageView,
   },

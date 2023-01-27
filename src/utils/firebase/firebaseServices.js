@@ -6,9 +6,14 @@ import {
   doc,
   getDocs,
   getDoc,
+  setDoc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
 } from "firebase/firestore";
+import { getCurrentAY } from "../datetime";
 
-//------------------------------------Module Collection-------------------------------------------
+// ----------------------- Modules Collection -----------------------
 
 const schema = {
   name: (value) => /^([A-Z][a-z\-]* )+[A-Z][a-z\-]*( \w+\.?)?$/.test(value),
@@ -39,6 +44,7 @@ export async function getModuleTerms(moduleCode) {
 
     const sectionData = section.data();
     const sectionTerm = {
+      sectionId: section.id,
       term: term,
       ...sectionData,
     };
@@ -187,4 +193,147 @@ export async function getCoursePrerequisite(code) {
   }
 }
 
-//---------------------------------------Professor Collection---------------------------------------------
+// ----------------------- Users Collection -----------------------
+
+export const getUserByUid = async (uid) => {
+  const userRef = doc(db, "Users", uid);
+  const userSnap = await getDoc(userRef);
+  if (userSnap.exists()) {
+    console.log("Document data:", userSnap.data());
+    return userSnap.data();
+  } else {
+    // doc.data() will be undefined in this case
+    console.log("No such document!");
+  }
+};
+
+export const createUser = async (user) => {
+  // user object created from firebase auth
+  const userRef = doc(db, "Users", user.uid);
+  await setDoc(userRef, user);
+};
+
+export const addModuleToUserTimetable = async (
+  user,
+  moduleCode,
+  sectionCode
+) => {
+  const userRef = doc(db, "Users", user.uid);
+  const module = await getFullCoursebyCode(moduleCode);
+  const section = module.terms.find((term) => term.sectionId === sectionCode);
+  const days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+  const dayName = days[section.class.day];
+
+  const updateTimetableFields = {
+    [`timetable.${getCurrentAY()}.${dayName}`]: arrayUnion(
+      doc(db, "Modules", moduleCode, "Sections", section.sectionId)
+    ),
+  };
+  await updateDoc(userRef, updateTimetableFields);
+
+  const userDocSnap = await getDoc(userRef);
+  if (userDocSnap.exists()) {
+    let userData = userDocSnap.data();
+    console.log("Document data:", userData);
+    return userData;
+  } else {
+    // doc.data() will be undefined in this case
+    console.log("No such document!");
+  }
+};
+
+export const removeModuleFromUserTimetable = async (
+  user,
+  moduleCode,
+  sectionCode
+) => {
+  const userRef = doc(db, "Users", user.uid);
+  const module = await getFullCoursebyCode(moduleCode);
+  const section = module.terms.find((term) => term.sectionId === sectionCode);
+  const days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+  const dayName = days[section.class.day];
+  const updateTimetableFields = {
+    [`timetable.${getCurrentAY()}.${dayName}`]: arrayRemove(
+      doc(db, "Modules", moduleCode, "Sections", section.sectionId)
+    ),
+  };
+  console.log(updateTimetableFields);
+  await updateDoc(userRef, updateTimetableFields);
+
+  const userDocSnap = await getDoc(userRef);
+  if (userDocSnap.exists()) {
+    let userData = userDocSnap.data();
+    console.log("Document data:", userData);
+    return userData;
+  } else {
+    // doc.data() will be undefined in this case
+    console.log("No such document!");
+  }
+};
+
+export const getUserTimetableByTerm = async (user, termId) => {
+  const userData = await getUserByUid(user.uid);
+  const termTimetable = userData.timetable[termId];
+  let timetableObj = {
+    mon: [],
+    tue: [],
+    wed: [],
+    thu: [],
+    fri: [],
+    sat: [],
+  };
+  for (const [day, modules] of Object.entries(termTimetable)) {
+    if (modules.length === 0) {
+      continue;
+    }
+    for (let module of modules) {
+      const moduleDocSnap = await getDoc(module);
+      if (moduleDocSnap.exists()) {
+        let moduleDoc = moduleDocSnap.data();
+        const moduleCode = module.path.split("/")[1];
+        const course = await getFullCoursebyCode(moduleCode);
+        moduleDoc.term = termId;
+        moduleDoc.showModule = true;
+        if (course !== undefined) {
+          moduleDoc = { ...moduleDoc, ...course };
+        }
+
+        console.log("Document data:", moduleDoc);
+        if (timetableObj[day].length === 0) {
+          timetableObj[day].push([moduleDoc]);
+          continue;
+        }
+
+        const modClassStartTime = moduleDoc.class.time_start;
+        const modClassEndTime = moduleDoc.class.time_end;
+        let isInserted = false;
+        for (let i = 0; i < timetableObj[day].length; i++) {
+          let daySubarray = timetableObj[day][i];
+          for (const moduleData of daySubarray) {
+            if (
+              !(
+                moduleData.class.time_start <= modClassEndTime &&
+                moduleData.class.time_end >= modClassStartTime
+              )
+            ) {
+              daySubarray.push(moduleDoc);
+              isInserted = true;
+              break;
+            }
+          }
+          if (isInserted) {
+            break;
+          }
+        }
+        if (!isInserted) {
+          timetableObj[day].push([moduleDoc]);
+        }
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    }
+  }
+
+  return timetableObj;
+};

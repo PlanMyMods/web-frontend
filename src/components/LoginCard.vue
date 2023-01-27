@@ -93,6 +93,7 @@ export default {
           email: this.email,
           password: this.password,
         });
+        this.loginError = "";
         this.router.push("/");
       } catch (err) {
         this.loginError = getFirebaseErrorMessage(err);
@@ -102,6 +103,7 @@ export default {
     async LoginGoogle() {
       try {
         await this.store.dispatch("googleLogIn");
+        this.loginError = "";
         this.router.push("/modules");
       } catch (err) {
         this.loginError = getFirebaseErrorMessage(err);
